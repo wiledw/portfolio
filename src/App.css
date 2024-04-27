@@ -173,8 +173,8 @@ img {
 /* For large devices */
 @media screen and (max-width: 992px) {
   .container {
-    margin-left: var(--mb-1-5);
-    margin-right: var(--mb-1-5);
+    padding-left: var(--mb-1-5);
+    padding-right: var(--mb-1-5);
   }
 
   .button {
@@ -190,7 +190,7 @@ img {
 /* For medium devices */
 @media screen and (max-width: 768px) {
   body {
-    margin: 0 0 var(--header-height) 0;
+    margin: 0 0 0 0;
   }
 
   .section {
@@ -203,6 +203,11 @@ img {
 }
 
 @media screen and (max-width: 576px) {
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
 }
 
 /* For small devices */
@@ -210,9 +215,13 @@ img {
   :root {
     --big-font-size: 2.25rem;
   }
-
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
   .container {
-    margin-left: var(--mb-1);
-    margin-right: var(--mb-1);
+    padding-left: var(--mb-1);
+    padding-right: var(--mb-1);
   }
 }
