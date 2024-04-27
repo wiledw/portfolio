@@ -90,7 +90,7 @@ const About = () => {
               <span className="second-color">email = </span>
               <span className="first-color">new </span>
               <span className="second-color">Email(</span>
-              <span className="fourth-color">"william.gunawan@torontomu.ca"</span>
+              <a href="mailto:wiliam.gunawan@torontomu.ca" className="fourth-color">"william.gunawan@torontomu.ca"</a>
               <span className="second-color">);</span>
               <br/>
               <span className="third-color">String[] </span>
