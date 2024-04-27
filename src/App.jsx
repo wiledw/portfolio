@@ -7,11 +7,15 @@ import Skills from './components/Skills/Skills'
 
 import Contact from "./components/Contact/Contact"
 import Footer from './components/Footer/Footer'
+import { Toaster } from 'react-hot-toast';
+
 
 const App = () => {
   return (
     <>
     <Header/>
+    <Toaster position='top-center' toastOptions={{duration: 2000}}/>
+
 
     <main className='main'>
       <Home/>
