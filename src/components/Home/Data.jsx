@@ -9,7 +9,7 @@ const Data = () => {
         Hello World and welcome to my portfolio! I'm thrilled to have the opportunity to share my skills and experiences. Thank you for visiting!
         </p>
 
-        <a href="contact" className="button button--flex">
+        <a href="#contact" className="button button--flex">
             Connect with me
             <svg
                   class="button__icon"
