@@ -2,7 +2,7 @@
     "portfolio": [
       {
         "id": "1",
-        "src": "src/assets/sageai.jpeg",
+        "src": "./img/sageai.jpeg",
         "title": "SageAI",
         "description": "A web application that facilitates the creation of personal accounts and allows users to submit their health data for disease diagnosis using advanced artificial intelligence & machine learning techniques.",
         "linkDesc": "View in Devpost",
@@ -11,7 +11,7 @@
       },
       {
         "id": "2",
-        "src": "./portfolio/src/assets/buyyit.png",
+        "src": "./img/buyyit.png",
         "title": "Buyyit",
         "description": "A commercial-grade web interface for a classified advertisements website tailored specifically for Toronto Metropolitan University students.",
         "linkDesc": "View in Github",
@@ -20,21 +20,21 @@
       },
       {
         "id": "3",
-        "src": "src/assets/rentaryde.png",
+        "src": "./img/rentaryde.png",
         "title": "RentARyde",
         "description": "Rent-A-Ryde is a car rental service based in Toronto, Canada. To facilitate business in an online setting, Rent-A-Ryde employs the use of an extensive database to document vehicles, customers, warehouses, employees as well as rental history.",
         "tech": ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "SQL", "Oracle Database"]
       },
       {
         "id": "4",
-        "src": "src/assets/athletx.png",
+        "src": "./img/athletx.png",
         "title": "AthletX",
         "description": "AthletX is a platform that allows customers to purchase sports goods from various departments of a store through an online interface. The platform offers a simple. quick and secure way of shopping. The system will use a user-friendly interface where customers can browse products, place orders, track deliveries and make payments.",
         "tech": ["Java", "JavaFX"]
       },
       {
         "id": "5",
-        "src": "src/assets/weather.png",
+        "src": "./img/weather.png",
         "title": "Weathery",
         "description": "A simple weather app with a user-friendly and visually appealing tool that provides the users a real-time weather information for cities around the world.",
         "linkDesc": "View in Github",
@@ -43,7 +43,7 @@
       },
       {
         "id": "6",
-        "src": "src/assets/portfolio.png",
+        "src": "./img/portfolio.png",
         "title": "Personal Website",
         "description": "Created and Design my own portfolio to showcase my skills, experiences and projects.",
         "linkDesc": "View in Github",
@@ -52,14 +52,14 @@
       },
       {
         "id": "7",
-        "src": "src/assets/handrecog.png",
+        "src": "./img/handrecog.png",
         "title": "Handwriting Digits Recognition",
         "description": "Developed a neural network using Keras to classify handwritten digits, incorporating ReLu-activated hidden layers and softmax output layer, which reduced computation time by 20% and achieved an impressive 95% accuracy rate.",
         "tech": ["Scikit-Learn", "Numpy", "Matplotlib", "TensorFlow", "Python"]
       },
       {
         "id": "8",
-        "src": "src/assets/heart.png",
+        "src": "./img/heart.png",
         "title": "Health Failure Research",
         "description": "Leverage Python for data preprocessing, outlier removal, hyperparameter tuning and K-Prototypes clustering algorithm.",
         "linkDesc": "View research paper",
