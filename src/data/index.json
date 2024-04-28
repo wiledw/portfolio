@@ -20,7 +20,7 @@
       },
       {
         "id": "3",
-        "src": "./src/assets/rentaryde.png",
+        "src": "assets/rentaryde.png",
         "title": "RentARyde",
         "description": "Rent-A-Ryde is a car rental service based in Toronto, Canada. To facilitate business in an online setting, Rent-A-Ryde employs the use of an extensive database to document vehicles, customers, warehouses, employees as well as rental history.",
         "tech": ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "SQL", "Oracle Database"]
