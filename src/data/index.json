@@ -1,0 +1,70 @@
+{
+    "portfolio": [
+      {
+        "id": "1",
+        "src": "src/assets/sageai.jpeg",
+        "title": "SageAI",
+        "description": "A web application that facilitates the creation of personal accounts and allows users to submit their health data for disease diagnosis using advanced artificial intelligence & machine learning techniques.",
+        "linkDesc": "View in Devpost",
+        "link": "https://devpost.com/software/sageai",
+        "tech": ["Python", "Tensorflow", "Pandas", "Express.js", "React.js", "Node.js" ,"MongoDB", "Vertex-AI", "HTML", "CSS"]
+      },
+      {
+        "id": "2",
+        "src": "src/assets/buyyit.png",
+        "title": "Buyyit",
+        "description": "A commercial-grade web interface for a classified advertisements website tailored specifically for Toronto Metropolitan University students.",
+        "linkDesc": "View in Github",
+        "link": "https://github.com/wiledw/Buyyit",
+        "tech": ["Express.js", "React.js", "Node.js" ,"MongoDB", "Socket.IO", "Jwt Authentication", "HTML", "CSS"]
+      },
+      {
+        "id": "3",
+        "src": "src/assets/rentaryde.png",
+        "title": "RentARyde",
+        "description": "Rent-A-Ryde is a car rental service based in Toronto, Canada. To facilitate business in an online setting, Rent-A-Ryde employs the use of an extensive database to document vehicles, customers, warehouses, employees as well as rental history.",
+        "tech": ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "SQL", "Oracle Database"]
+      },
+      {
+        "id": "4",
+        "src": "src/assets/athletx.png",
+        "title": "AthletX",
+        "description": "AthletX is a platform that allows customers to purchase sports goods from various departments of a store through an online interface. The platform offers a simple. quick and secure way of shopping. The system will use a user-friendly interface where customers can browse products, place orders, track deliveries and make payments.",
+        "tech": ["Java", "JavaFX"]
+      },
+      {
+        "id": "5",
+        "src": "src/assets/weather.png",
+        "title": "Weathery",
+        "description": "A simple weather app with a user-friendly and visually appealing tool that provides the users a real-time weather information for cities around the world.",
+        "linkDesc": "View in Github",
+        "link": "https://github.com/wiledw/weatherapp",
+        "tech": ["HTML", "CSS", "JavaScript", "Weather API"]
+      },
+      {
+        "id": "6",
+        "src": "src/assets/portfolio.png",
+        "title": "Personal Website",
+        "description": "Created and Design my own portfolio to showcase my skills, experiences and projects.",
+        "linkDesc": "View in Github",
+        "link": "https://github.com/wiledw/portfolio",
+        "tech": ["Vite", "React.js","HTML","CSS"]
+      },
+      {
+        "id": "7",
+        "src": "src/assets/handrecog.png",
+        "title": "Handwriting Digits Recognition",
+        "description": "Developed a neural network using Keras to classify handwritten digits, incorporating ReLu-activated hidden layers and softmax output layer, which reduced computation time by 20% and achieved an impressive 95% accuracy rate.",
+        "tech": ["Scikit-Learn", "Numpy", "Matplotlib", "TensorFlow", "Python"]
+      },
+      {
+        "id": "8",
+        "src": "src/assets/heart.png",
+        "title": "Health Failure Research",
+        "description": "Leverage Python for data preprocessing, outlier removal, hyperparameter tuning and K-Prototypes clustering algorithm.",
+        "linkDesc": "View research paper",
+        "link": "https://drive.google.com/file/d/1Mr2p64BgsV7PMWmqMqS8w75k8mlyV1Ik/view?usp=sharing",
+        "tech": ["Scikit-Learn", "Numpy", "Matplotlib", "K-modes", "Seaborn", "Pandas", "Python"]
+      }
+    ]
+  }

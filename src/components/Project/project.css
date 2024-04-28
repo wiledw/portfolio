@@ -1,0 +1,126 @@
+.portfolio--section {
+    display: flex;
+    padding: 112px 85px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 80px;
+  }
+  .portfolio--container-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+  }
+  .portfolio--container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 21.3px;
+  }
+  .portfolio--section--container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 42.6px;
+    width: 90%;
+  }
+  .portfolio--section--img {
+    border-radius: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+   
+  }
+  .portfolio--section--img > img {
+    width: 90%;
+    border-radius: 12px;
+
+  }
+  .portfolio--section--card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    background: #fff;
+    box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-sizing: border-box; 
+    max-width: calc(100% - 42.6px);
+    flex: 1 1 300px;
+  }
+  .portfolio--section--card--content {
+    display: flex;
+    padding: 0 32px 32px 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    align-self: stretch;
+  }
+  .portfolio--section--title {
+    color: var(--heading-color);
+  }
+  .portfolio--link {
+    text-decoration: none;
+    display: flex;
+    gap: 10px;
+    border-bottom: 1.33px solid var(--primary);
+    padding-bottom: 10.6px;
+    font-weight: 600;
+  }
+
+  .svg-position{
+    margin-top: 2px;
+  }
+
+  .portfolio--section--card:hover path {
+    stroke: #006b6a;
+  }
+
+  .portfolio--tech-used {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .tech-tag {
+    background-color: #e1e1e1; /* Light gray background */
+    color: #333; /* Dark text color for contrast */
+    padding: 5px 10px;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 12px; /* Smaller font size */
+  }
+  
+
+
+/* For medium devices */
+@media screen and (max-width: 768px) {
+    .portfolio--section--container {
+      justify-content: space-around; /* Adjust layout spacing for medium devices */
+    }
+  }
+  
+  /* For small devices */
+  @media screen and (max-width: 576px) {
+    .portfolio--section--card {
+      flex-basis: 100%; /* Makes each card take full width of the container */
+      max-width: 100%; /* Ensures card doesn't exceed container's width */
+    }
+    .portfolio--section--card--content {
+      padding: 0 20px 20px; /* Adjust padding for smaller devices */
+    }
+  }
+  
+  /* For very small devices */
+  @media screen and (max-width: 350px) {
+    .portfolio--section--img > img {
+      width: 100%; /* Makes image take full width of the card */
+    }
+  }
+  
