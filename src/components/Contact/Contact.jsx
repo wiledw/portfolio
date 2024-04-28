@@ -13,6 +13,19 @@ const Contact = () => {
 
     const sendEmail = (e) => {
         e.preventDefault();
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+
+        if (!formData.name || !formData.email || !formData.project) {
+            toast.error('Please fill out all fields.');
+            return;
+        }
+
+        if (!emailRegex.test(formData.email)) {
+            toast.error('Please enter a valid email address.');
+            return;
+        }
+
 
         emailjs.sendForm(
             import.meta.env.VITE_EMAILJS_SERVICE_ID,
