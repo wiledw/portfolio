@@ -97,6 +97,24 @@ const Experience = () => {
                             <span className="experience__line"></span>
                         </div>
                     </div>
+        
+                    <div className="experience__data">
+                        <div></div>
+                        <div>
+                            <span className="experience__rounder"></span>
+                            <span className="experience__line"></span>
+                        </div>
+
+                        <div>
+                            <h3 className="experience__title">Software Engineer</h3>
+                            <span className="experience__subtitle">Esportium</span>
+                            <div className="experience__calender">
+                                <i className="uil uil-calender calender"/>May 2024
+                            </div>
+                        </div>
+
+                        
+                    </div>
                     
                 </div>
             </div>
