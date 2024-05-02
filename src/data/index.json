@@ -30,7 +30,7 @@
         "src": "./img/athletx.png",
         "title": "AthletX",
         "description": "AthletX is a platform that allows customers to purchase sports goods from various departments of a store through an online interface. The platform offers a simple. quick and secure way of shopping. The system will use a user-friendly interface where customers can browse products, place orders, track deliveries and make payments.",
-        "tech": ["Java", "JavaFX"]
+        "tech": ["Java", "JavaFX", "Oracle Database"]
       },
       {
         "id": "5",
