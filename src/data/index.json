@@ -32,6 +32,8 @@
         "src": "./img/rentaryde.png",
         "title": "RentARyde",
         "description": "Rent-A-Ryde is a car rental service based in Toronto, Canada. To facilitate business in an online setting, Rent-A-Ryde employs the use of an extensive database to document vehicles, customers, warehouses, employees as well as rental history.",
+        "linkDesc": "View in Github",
+        "link": "https://github.com/wiledw/rentaryde",
         "tech": ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "SQL", "Oracle Database"]
       },
       {
@@ -39,6 +41,8 @@
         "src": "./img/athletx.png",
         "title": "AthletX",
         "description": "AthletX is a platform that allows customers to purchase sports goods from various departments of a store through an online interface. The platform offers a simple. quick and secure way of shopping. The system will use a user-friendly interface where customers can browse products, place orders, track deliveries and make payments.",
+        "linkDesc": "View in Github",
+        "link": "https://github.com/wiledw/AthletX",
         "tech": ["Java", "JavaFX", "Oracle Database"]
       },
       {
