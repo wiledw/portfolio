@@ -22,7 +22,7 @@ const Experience = () => {
                             <h3 className="experience__title">Founder</h3>
                             <span className="experience__subtitle">WTOKOBD</span>
                             <div className="experience__calender">
-                                <i className="uil uil-calender calender"/>Feb 2017 - Dec 2020
+                                <i className="uil uil-calender calender"/>Feb.2017 - Dec.2020
                             </div>
                         </div>
 
@@ -43,7 +43,7 @@ const Experience = () => {
                             <h3 className="experience__title">Content Creator</h3>
                             <span className="experience__subtitle">YouTube</span>
                             <div className="experience__calender">
-                                <i className="uil uil-calender calender"/>Mar 2019 - Feb 2023
+                                <i className="uil uil-calender calender"/>Mar.2019 - Feb.2023
                             </div>
                         </div>
 
@@ -55,7 +55,7 @@ const Experience = () => {
                             <h3 className="experience__title">Content Creator</h3>
                             <span className="experience__subtitle">TikTok</span>
                             <div className="experience__calender">
-                                <i className="uil uil-calender calender"/>Jan 2021 - Feb 2023
+                                <i className="uil uil-calender calender"/>Jan.2021 - Feb.2023
                             </div>
                         </div>
 
@@ -76,7 +76,7 @@ const Experience = () => {
                             <h3 className="experience__title">E-sports Athlete</h3>
                             <span className="experience__subtitle">Toronto Metropolitan University</span>
                             <div className="experience__calender">
-                                <i className="uil uil-calender calender"/>Sep 2021 - Apr 2023
+                                <i className="uil uil-calender calender"/>Sep.2021 - Apr.2023
                             </div>
                         </div>
 
@@ -88,7 +88,7 @@ const Experience = () => {
                             <h3 className="experience__title">Full Stack Developer</h3>
                             <span className="experience__subtitle">Cove</span>
                             <div className="experience__calender">
-                                <i className="uil uil-calender calender"/>May 2023 - Aug 2023
+                                <i className="uil uil-calender calender"/>May.2023 - Aug.2023
                             </div>
                         </div>
 
@@ -109,8 +109,7 @@ const Experience = () => {
                             <h3 className="experience__title">Software Engineer</h3>
                             <span className="experience__subtitle">Esportium</span>
                             <div className="experience__calender">
-                                <i className="uil uil-calender calender"/>May 2024 - Aug 2024
-                            </div>
+                                <i className="uil uil-calender calender"/>May.2024 - Aug.2024                            </div>
                         </div>
 
                         

@@ -26,7 +26,7 @@ const languages = () => {
                     <i class='bx bx-badge-check'></i>
 
                     <div>
-                        <h3 className="skills_name">C</h3>
+                        <h3 className="skills_name">SQL</h3>
                         
                     </div>
                 </div>
@@ -34,7 +34,7 @@ const languages = () => {
                     <i class='bx bx-badge-check'></i>
 
                     <div>
-                        <h3 className="skills_name">C++</h3>
+                        <h3 className="skills_name">C#</h3>
                         
                     </div>
                 </div>
@@ -53,6 +53,14 @@ const languages = () => {
                     <i class='bx bx-badge-check'></i>
 
                     <div>
+                        <h3 className="skills_name">Typescript</h3>
+                        
+                    </div>
+                </div>
+                <div className="skills__data">
+                    <i class='bx bx-badge-check'></i>
+
+                    <div>
                         <h3 className="skills_name">HTML</h3>
                         
                     </div>
@@ -62,14 +70,6 @@ const languages = () => {
 
                     <div>
                         <h3 className="skills_name">CSS</h3>
-                        
-                    </div>
-                </div>
-                <div className="skills__data">
-                    <i class='bx bx-badge-check'></i>
-
-                    <div>
-                        <h3 className="skills_name">SQL</h3>
                         
                     </div>
                 </div>
