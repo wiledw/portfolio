@@ -109,7 +109,7 @@ const Experience = () => {
                             <h3 className="experience__title">Software Engineer</h3>
                             <span className="experience__subtitle">Esportium</span>
                             <div className="experience__calender">
-                                <i className="uil uil-calender calender"/>May 2024
+                                <i className="uil uil-calender calender"/>May 2024 - Aug 2024
                             </div>
                         </div>
 
