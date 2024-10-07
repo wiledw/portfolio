@@ -20,6 +20,15 @@
       },
       {
         "id": "3",
+        "src": "./img/trashcam.png",
+        "title": "Trashcam",
+        "description": "TrashCam simplifies waste sorting through real-time object recognition, turning trash disposal into a fun, interactive experience",
+        "linkDesc": "View in Devpost",
+        "link": "https://devpost.com/software/trashcam-rwtjqn",
+        "tech": ["Next.js", "TypeScript" ,"PostgreSql", "Prisma", "Google Vision", "Coco-ssd","Gemini"]
+      },
+      {
+        "id": "4",
         "src": "./img/buyyit.png",
         "title": "Buyyit",
         "description": "A commercial-grade web interface for a classified advertisements website tailored specifically for Toronto Metropolitan University students.",
@@ -28,7 +37,7 @@
         "tech": ["Express.js", "React.js", "Node.js" ,"MongoDB", "Socket.IO", "Jwt Authentication", "HTML", "CSS"]
       },
       {
-        "id": "4",
+        "id": "5",
         "src": "./img/rentaryde.png",
         "title": "RentARyde",
         "description": "Rent-A-Ryde is a car rental service based in Toronto, Canada. To facilitate business in an online setting, Rent-A-Ryde employs the use of an extensive database to document vehicles, customers, warehouses, employees as well as rental history.",
@@ -37,7 +46,7 @@
         "tech": ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "SQL", "Oracle Database"]
       },
       {
-        "id": "5",
+        "id": "6",
         "src": "./img/athletx.png",
         "title": "AthletX",
         "description": "AthletX is a platform that allows customers to purchase sports goods from various departments of a store through an online interface. The platform offers a simple. quick and secure way of shopping. The system will use a user-friendly interface where customers can browse products, place orders, track deliveries and make payments.",
@@ -46,7 +55,7 @@
         "tech": ["Java", "JavaFX", "Oracle Database"]
       },
       {
-        "id": "6",
+        "id": "7",
         "src": "./img/weather.png",
         "title": "Weathery",
         "description": "A simple weather app with a user-friendly and visually appealing tool that provides the users a real-time weather information for cities around the world.",
@@ -55,7 +64,7 @@
         "tech": ["HTML", "CSS", "JavaScript", "Weather API"]
       },
       {
-        "id": "7",
+        "id": "8",
         "src": "./img/portfolio.png",
         "title": "Personal Website",
         "description": "Created and Design my own portfolio to showcase my skills, experiences and projects.",
@@ -64,29 +73,20 @@
         "tech": ["Vite", "React.js","HTML","CSS"]
       },
       {
-        "id": "8",
+        "id": "9",
         "src": "./img/handrecog.png",
         "title": "Handwriting Digits Recognition",
         "description": "Developed a neural network using Keras to classify handwritten digits, incorporating ReLu-activated hidden layers and softmax output layer, which reduced computation time by 20% and achieved an impressive 95% accuracy rate.",
         "tech": ["Scikit-Learn", "Numpy", "Matplotlib", "TensorFlow", "Python"]
       },
       {
-        "id": "9",
+        "id": "10",
         "src": "./img/heart.png",
         "title": "Health Failure Research",
         "description": "Leverage Python for data preprocessing, outlier removal, hyperparameter tuning and K-Prototypes clustering algorithm.",
         "linkDesc": "View research paper",
         "link": "https://drive.google.com/file/d/1Mr2p64BgsV7PMWmqMqS8w75k8mlyV1Ik/view?usp=sharing",
         "tech": ["Scikit-Learn", "Numpy", "Matplotlib", "K-modes", "Seaborn", "Pandas", "Python"]
-      },
-      {
-        "id": "10",
-        "src": "./img/Spam.png",
-        "title": "Email Spam Detection",
-        "description": "Use Machine Learning to detect whether an email is a spam or not.",
-        "linkDesc": "View in Github",
-        "link": "https://github.com/wiledw/Spam-Detection",
-        "tech": ["Scikit-Learn", "Numpy", "Pandas", "NLTK", "Python"]
       }
     ]
   }
