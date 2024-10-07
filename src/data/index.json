@@ -11,21 +11,21 @@
       },
       {
         "id": "2",
-        "src": "./img/ecofind.png",
-        "title": "EcoFind",
-        "description": " Ecofind is an innovative application designed to facilitate guilt-free 3D printing by providing a solution for the disposal and recycling of 3D printing plastics.",
-        "linkDesc": "View in Devpost",
-        "link": "https://devpost.com/software/ecofind-esvfa7",
-        "tech": ["Next.js", "Node.js" ,"TypeScript", "AWS", "Supabase", "OpenAI"]
-      },
-      {
-        "id": "3",
         "src": "./img/trashcam.png",
         "title": "Trashcam",
         "description": "TrashCam simplifies waste sorting through real-time object recognition, turning trash disposal into a fun, interactive experience",
         "linkDesc": "View in Devpost",
         "link": "https://devpost.com/software/trashcam-rwtjqn",
         "tech": ["Next.js", "TypeScript" ,"PostgreSql", "Prisma", "Google Vision", "Coco-ssd","Gemini"]
+      },
+      {
+        "id": "3",
+        "src": "./img/ecofind.png",
+        "title": "EcoFind",
+        "description": " Ecofind is an innovative application designed to facilitate guilt-free 3D printing by providing a solution for the disposal and recycling of 3D printing plastics.",
+        "linkDesc": "View in Devpost",
+        "link": "https://devpost.com/software/ecofind-esvfa7",
+        "tech": ["Next.js", "Node.js" ,"TypeScript", "AWS", "Supabase", "OpenAI"]
       },
       {
         "id": "4",
