@@ -10,7 +10,7 @@ const tech = () => {
                     <i class='bx bx-badge-check'></i>
 
                     <div>
-                        <h3 className="skills_name">Git</h3>
+                        <h3 className="skills_name">Next.js</h3>
                         
                     </div>
                 </div>
@@ -43,7 +43,7 @@ const tech = () => {
                     <i class='bx bx-badge-check'></i>
 
                     <div>
-                        <h3 className="skills_name">MongoDB</h3>
+                        <h3 className="skills_name">TensorFlow</h3>
                         
                     </div>
                 </div>
@@ -51,7 +51,7 @@ const tech = () => {
                     <i class='bx bx-badge-check'></i>
 
                     <div>
-                        <h3 className="skills_name">Oracle</h3>
+                        <h3 className="skills_name">FastAPI</h3>
                         
                     </div>
                 </div>
@@ -59,7 +59,7 @@ const tech = () => {
                     <i class='bx bx-badge-check'></i>
 
                     <div>
-                        <h3 className="skills_name">Docker</h3>
+                        <h3 className="skills_name">Django</h3>
                         
                     </div>
                 </div>
@@ -67,7 +67,7 @@ const tech = () => {
                     <i class='bx bx-badge-check'></i>
 
                     <div>
-                        <h3 className="skills_name">Next.js</h3>
+                        <h3 className="skills_name">OAuth</h3>
                         
                     </div>
                 </div>

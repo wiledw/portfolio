@@ -29,6 +29,15 @@
       },
       {
         "id": "4",
+        "src": "./img/ali.png",
+        "title": "ALI",
+        "description": " Ali is an AI-powered mobile app that not only helps detect early signs of Alzheimer's through natural speech analysis but also provides elderly companionship, reducing the emotional and cognitive isolation that many experience. ",
+        "linkDesc": "View in DoraHacks",
+        "link": "https://dorahacks.io/buidl/17822",
+        "tech": ["React Native", "FastAPI" ,"Python", "AWS", "PyTorch", "Gemini", "Wave2Vec", "Python", "LangChain"]
+      },
+      {
+        "id": "5",
         "src": "./img/buyyit.png",
         "title": "Buyyit",
         "description": "A commercial-grade web interface for a classified advertisements website tailored specifically for Toronto Metropolitan University students.",
@@ -37,7 +46,7 @@
         "tech": ["Express.js", "React.js", "Node.js" ,"MongoDB", "Socket.IO", "Jwt Authentication", "HTML", "CSS"]
       },
       {
-        "id": "5",
+        "id": "6",
         "src": "./img/rentaryde.png",
         "title": "RentARyde",
         "description": "Rent-A-Ryde is a car rental service based in Toronto, Canada. To facilitate business in an online setting, Rent-A-Ryde employs the use of an extensive database to document vehicles, customers, warehouses, employees as well as rental history.",
@@ -46,22 +55,13 @@
         "tech": ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "SQL", "Oracle Database"]
       },
       {
-        "id": "6",
+        "id": "7",
         "src": "./img/athletx.png",
         "title": "AthletX",
         "description": "AthletX is a platform that allows customers to purchase sports goods from various departments of a store through an online interface. The platform offers a simple. quick and secure way of shopping. The system will use a user-friendly interface where customers can browse products, place orders, track deliveries and make payments.",
         "linkDesc": "View in Github",
         "link": "https://github.com/wiledw/AthletX",
         "tech": ["Java", "JavaFX", "Oracle Database"]
-      },
-      {
-        "id": "7",
-        "src": "./img/weather.png",
-        "title": "Weathery",
-        "description": "A simple weather app with a user-friendly and visually appealing tool that provides the users a real-time weather information for cities around the world.",
-        "linkDesc": "View in Github",
-        "link": "https://github.com/wiledw/weatherapp",
-        "tech": ["HTML", "CSS", "JavaScript", "Weather API"]
       },
       {
         "id": "8",
