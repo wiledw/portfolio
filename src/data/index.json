@@ -20,12 +20,12 @@
       },
       {
         "id": "3",
-        "src": "./img/ecofind.png",
-        "title": "EcoFind",
-        "description": " Ecofind is an innovative application designed to facilitate guilt-free 3D printing by providing a solution for the disposal and recycling of 3D printing plastics.",
+        "src": "./img/magicquil.PNG",
+        "title": "Magic Quill",
+        "description": "Magic.quill—not just a notetaker, but your all-in-one academic ally. magic.quill transcribes lectures in real-time, converting spoken words, slides, diagrams, and complex equations into organized, human-readable notes. Focus on learning—magic.quill captures every bit of knowledge, rendered beautifully in markdown and PDF, ready for easy review.",
         "linkDesc": "View in Devpost",
-        "link": "https://devpost.com/software/ecofind-esvfa7",
-        "tech": ["Next.js", "Node.js" ,"TypeScript", "AWS", "Supabase", "OpenAI"]
+        "link": "https://devpost.com/software/magic-quill",
+        "tech": ["Next.js", "Tailwind" ,"React Speech Recognition", "OCR", "Gemini", "Latex"]
       },
       {
         "id": "4",
@@ -38,6 +38,15 @@
       },
       {
         "id": "5",
+        "src": "./img/ecofind.png",
+        "title": "EcoFind",
+        "description": " Ecofind is an innovative application designed to facilitate guilt-free 3D printing by providing a solution for the disposal and recycling of 3D printing plastics.",
+        "linkDesc": "View in Devpost",
+        "link": "https://devpost.com/software/ecofind-esvfa7",
+        "tech": ["Next.js", "Node.js" ,"TypeScript", "AWS", "Supabase", "OpenAI"]
+      },
+      {
+        "id": "6",
         "src": "./img/buyyit.png",
         "title": "Buyyit",
         "description": "A commercial-grade web interface for a classified advertisements website tailored specifically for Toronto Metropolitan University students.",
@@ -46,7 +55,7 @@
         "tech": ["Express.js", "React.js", "Node.js" ,"MongoDB", "Socket.IO", "Jwt Authentication", "HTML", "CSS"]
       },
       {
-        "id": "6",
+        "id": "7",
         "src": "./img/rentaryde.png",
         "title": "RentARyde",
         "description": "Rent-A-Ryde is a car rental service based in Toronto, Canada. To facilitate business in an online setting, Rent-A-Ryde employs the use of an extensive database to document vehicles, customers, warehouses, employees as well as rental history.",
@@ -55,22 +64,13 @@
         "tech": ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "SQL", "Oracle Database"]
       },
       {
-        "id": "7",
+        "id": "8",
         "src": "./img/athletx.png",
         "title": "AthletX",
         "description": "AthletX is a platform that allows customers to purchase sports goods from various departments of a store through an online interface. The platform offers a simple. quick and secure way of shopping. The system will use a user-friendly interface where customers can browse products, place orders, track deliveries and make payments.",
         "linkDesc": "View in Github",
         "link": "https://github.com/wiledw/AthletX",
         "tech": ["Java", "JavaFX", "Oracle Database"]
-      },
-      {
-        "id": "8",
-        "src": "./img/portfolio.png",
-        "title": "Personal Website",
-        "description": "Created and Design my own portfolio to showcase my skills, experiences and projects.",
-        "linkDesc": "View in Github",
-        "link": "https://github.com/wiledw/portfolio",
-        "tech": ["Vite", "React.js","HTML","CSS"]
       },
       {
         "id": "9",
