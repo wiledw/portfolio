@@ -4,7 +4,7 @@ import "./project.css";
 export default function MyPortfolio() {
   return (
     <section className="project section" id="projects">
-        <h2 className="section__title">Projects</h2>
+        <h2 className="section__title">My Winning Hackathon Projects</h2>
         <span className="section__subtitle"></span>
 
       <div className="portfolio--section--container container">
