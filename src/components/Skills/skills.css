@@ -2,6 +2,7 @@
     grid-template-columns: repeat(3, 350px);
     column-gap: 3rem;
     justify-content: center;
+    transition: all 0.3s ease;
 }
 
 .skills__content {
@@ -9,6 +10,14 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 2rem 4rem;
     border-radius: 1.25rem;
+    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translateY(0);
+}
+
+.skills__content:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.08);
 }
 
 .skills__title {
