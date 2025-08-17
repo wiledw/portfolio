@@ -83,8 +83,8 @@ const About = () => {
               <span className="fourth-color">Computer Science</span><span className="second-color">;</span>
               <br/>
               <span className="third-color">int </span>
-              <span className="second-color">expGraduation = </span>
-              <span className="fourth-color">May 2025</span><span className="second-color">;</span>
+              <span className="second-color">graduated = </span>
+              <span className="fourth-color">2025</span><span className="second-color">;</span>
               <br/>
               <span className="third-color">Email </span>
               <span className="second-color">email = </span>

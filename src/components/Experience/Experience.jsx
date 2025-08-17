@@ -76,7 +76,7 @@ const Experience = () => {
                         </div>
 
                         <div>
-                            <h3 className="experience__title">Software Engineer Intern</h3>
+                            <h3 className="experience__title">Front-end Developer</h3>
                             <span className="experience__subtitle">MedPass</span>
                             <div className="experience__calender">
                                 <i className="uil uil-calender calender"/>Feb.2025 - May.2025                           
@@ -91,7 +91,7 @@ const Experience = () => {
                             <h3 className="experience__title">Software Engineer</h3>
                             <span className="experience__subtitle">FinChat</span>
                             <div className="experience__calender">
-                                <i className="uil uil-calender calender"/>May.2025 - Present
+                                <i className="uil uil-calender calender"/>Apr.2025 - Jul.2025
                             </div>
                         </div>
 
@@ -99,6 +99,24 @@ const Experience = () => {
                             <span className="experience__rounder"></span>
                             <span className="experience__line"></span>
                         </div>
+                    </div>
+
+                    <div className="experience__data">
+                        <div></div>
+                        <div>
+                            <span className="experience__rounder"></span>
+                            <span className="experience__line"></span>
+                        </div>
+
+                        <div>
+                            <h3 className="experience__title">Software Engineer</h3>
+                            <span className="experience__subtitle">Postilize</span>
+                            <div className="experience__calender">
+                                <i className="uil uil-calender calender"/>Aug.2025 - Present                          
+                            </div>
+                        </div>
+
+                        
                     </div>
                 </div>
             </div>
