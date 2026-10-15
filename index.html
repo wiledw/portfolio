@@ -88,7 +88,8 @@
   }
 
   /* Line masks for text reveals */
-  .line { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.08em; }
+  /* Extra bottom room so descenders (g, y, p) aren't clipped by the reveal mask */
+  .line { display: block; overflow: hidden; padding-bottom: .24em; margin-bottom: -.24em; }
   .line-inner { display: block; will-change: transform; }
 
   .js #hero { visibility: hidden; }
@@ -164,6 +165,36 @@
   .card:hover .arrow { color: var(--paper); border-color: var(--ink); }
   .card:hover .arrow::before { transform: scale(1); }
   .card:hover .arrow svg { transform: rotate(45deg); }
+
+  /* About portrait: an organic, slowly morphing frame that echoes the particle sphere,
+     with a dotted orbit outline like the ring around it */
+  .portrait { position: relative; max-width: 400px; margin-left: 14px; }
+  .portrait::before {
+    content: ""; position: absolute; inset: -14px; z-index: 0; pointer-events: none;
+    border: 1.5px dotted rgba(10, 10, 10, .35);
+    border-radius: 46% 54% 42% 58% / 55% 45% 55% 45%;
+    animation: blob-b 18s ease-in-out infinite alternate;
+  }
+  .portrait-frame {
+    position: relative; z-index: 1; overflow: hidden; isolation: isolate;
+    aspect-ratio: 4 / 5; background: var(--line);
+    border-radius: 58% 42% 50% 50% / 46% 52% 48% 54%;
+    animation: blob-a 14s ease-in-out infinite alternate;
+  }
+  .portrait-frame img {
+    position: absolute; left: 0; top: -6%;
+    width: 100%; height: 112%; object-fit: cover;
+  }
+  @keyframes blob-a {
+    0%   { border-radius: 58% 42% 50% 50% / 46% 52% 48% 54%; }
+    50%  { border-radius: 44% 56% 58% 42% / 54% 44% 56% 46%; }
+    100% { border-radius: 52% 48% 40% 60% / 48% 58% 42% 52%; }
+  }
+  @keyframes blob-b {
+    0%   { border-radius: 46% 54% 42% 58% / 55% 45% 55% 45%; transform: rotate(0deg); }
+    50%  { border-radius: 56% 44% 54% 46% / 45% 55% 45% 55%; transform: rotate(4deg); }
+    100% { border-radius: 42% 58% 50% 50% / 52% 48% 52% 48%; transform: rotate(-3deg); }
+  }
 
   .tag {
     font-family: "JetBrains Mono", ui-monospace, monospace;
@@ -558,6 +589,12 @@
       </div>
 
       <div class="md:col-span-6 md:col-start-7">
+        <figure class="portrait mb-20 md:mb-28" data-reveal>
+          <div class="portrait-frame">
+            <img src="/img/profile.jpg" alt="Portrait of William Edwardo Gunawan by a mountain lake" width="1200" height="1500" loading="lazy" decoding="async">
+          </div>
+        </figure>
+
         <p class="label text-mute mb-6" data-reveal>Philosophy</p>
         <ol class="border-t border-line">
           <li class="py-8 md:py-10 border-b border-line grid grid-cols-[3rem_1fr] md:grid-cols-[4rem_1fr] gap-4" data-reveal>
@@ -874,6 +911,7 @@
   setInterval(tick, 15000);
 
   const refreshScroll = () => window.ScrollTrigger && ScrollTrigger.refresh();
+
 
   /* ------------------------------------------------------------------
      Nav state: frosted once scrolled, dark over the contact section,
@@ -1352,6 +1390,16 @@
       once: true,
       onEnter: (batch) => gsap.to(batch, { autoAlpha: 1, y: 0, duration: 1.2, ease: 'expo.out', stagger: 0.08, overwrite: true }),
     });
+
+    // Portrait drifts a little slower than the page for depth
+    const portraitImg = document.querySelector('.portrait-frame img');
+    if (portraitImg) {
+      gsap.fromTo(portraitImg, { yPercent: -5 }, {
+        yPercent: 5,
+        ease: 'none',
+        scrollTrigger: { trigger: '.portrait-frame', start: 'top bottom', end: 'bottom top', scrub: true },
+      });
+    }
 
     // On tall screens the last items can sit below the trigger line even at
     // full scroll, so reveal whatever is still hidden once the page bottoms out
