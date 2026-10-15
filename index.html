@@ -1352,6 +1352,17 @@
       once: true,
       onEnter: (batch) => gsap.to(batch, { autoAlpha: 1, y: 0, duration: 1.2, ease: 'expo.out', stagger: 0.08, overwrite: true }),
     });
+
+    // On tall screens the last items can sit below the trigger line even at
+    // full scroll, so reveal whatever is still hidden once the page bottoms out
+    ScrollTrigger.create({
+      start: () => ScrollTrigger.maxScroll(window) - 4,
+      once: true,
+      onEnter: () => {
+        const pending = gsap.utils.toArray('[data-reveal]').filter((el) => getComputedStyle(el).visibility === 'hidden');
+        if (pending.length) gsap.to(pending, { autoAlpha: 1, y: 0, duration: 1.2, ease: 'expo.out', stagger: 0.08, overwrite: true });
+      },
+    });
   }
 
   /* ------------------------------------------------------------------
