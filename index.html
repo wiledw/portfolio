@@ -462,39 +462,12 @@
           </a>
         </article>
 
-        <!-- SageAI -->
-        <article class="card md:col-span-7 border border-line bg-paper" data-reveal>
-          <a href="https://devpost.com/software/sageai" target="_blank" rel="noopener noreferrer" class="flex flex-col h-full" data-cursor>
-            <div class="relative overflow-hidden aspect-[16/10] bg-line">
-              <img src="/img/sageai.jpeg" alt="SageAI symptom analysis screen" class="photo absolute inset-0 w-full h-full object-cover" loading="lazy">
-              <span class="absolute top-5 left-5 label text-white mix-blend-difference">04</span>
-            </div>
-            <div class="p-6 md:p-8 flex flex-col gap-5 flex-1">
-              <div class="flex items-start justify-between gap-6">
-                <div>
-                  <p class="label text-mute">GenAI Genesis (Google) · Winner</p>
-                  <h3 class="mt-3 font-display font-medium text-2xl md:text-3xl tracking-[-.03em]">SageAI</h3>
-                </div>
-                <span class="arrow" aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.3"/></svg>
-                </span>
-              </div>
-              <p class="text-[15px] leading-relaxed text-neutral-600">
-                An AI diagnostic tool that reads written symptoms with BERT and turns uploaded images into descriptions with Google Imagen, reaching over 90% accuracy across 41 diseases.
-              </p>
-              <div class="flex flex-wrap gap-2 mt-auto">
-                <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">PyTorch</span><span class="tag">Vertex AI</span><span class="tag">MongoDB</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
         <!-- TrashCam -->
-        <article class="card md:col-span-5 md:mt-24 border border-line bg-paper" data-reveal>
+        <article class="card md:col-span-7 border border-line bg-paper" data-reveal>
           <a href="https://devpost.com/software/trashcam-rwtjqn" target="_blank" rel="noopener noreferrer" class="flex flex-col h-full" data-cursor>
             <div class="relative overflow-hidden aspect-[16/10] bg-white border-b border-line">
-              <img src="/img/trashcam.png" alt="TrashCam logo" class="photo absolute inset-0 w-full h-full object-contain p-8 md:p-10" loading="lazy">
-              <span class="absolute top-5 left-5 label text-white mix-blend-difference">05</span>
+              <img src="/img/trashcam.png" alt="TrashCam logo" class="photo absolute inset-0 w-full h-full object-contain p-12 md:p-20" loading="lazy">
+              <span class="absolute top-5 left-5 label text-white mix-blend-difference">04</span>
             </div>
             <div class="p-6 md:p-8 flex flex-col gap-5 flex-1">
               <div class="flex items-start justify-between gap-6">
@@ -511,6 +484,33 @@
               </p>
               <div class="flex flex-wrap gap-2 mt-auto">
                 <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">PostgreSQL</span><span class="tag">Gemini</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- SageAI -->
+        <article class="card md:col-span-5 md:mt-24 border border-line bg-paper" data-reveal>
+          <a href="https://devpost.com/software/sageai" target="_blank" rel="noopener noreferrer" class="flex flex-col h-full" data-cursor>
+            <div class="relative overflow-hidden aspect-[16/10] bg-line">
+              <img src="/img/sageai.jpeg" alt="SageAI symptom analysis screen" class="photo absolute inset-0 w-full h-full object-cover" loading="lazy">
+              <span class="absolute top-5 left-5 label text-white mix-blend-difference">05</span>
+            </div>
+            <div class="p-6 md:p-8 flex flex-col gap-5 flex-1">
+              <div class="flex items-start justify-between gap-6">
+                <div>
+                  <p class="label text-mute">GenAI Genesis (Google) · Winner</p>
+                  <h3 class="mt-3 font-display font-medium text-2xl md:text-3xl tracking-[-.03em]">SageAI</h3>
+                </div>
+                <span class="arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.3"/></svg>
+                </span>
+              </div>
+              <p class="text-[15px] leading-relaxed text-neutral-600">
+                An AI diagnostic tool that reads written symptoms with BERT and turns uploaded images into descriptions with Google Imagen, reaching over 90% accuracy across 41 diseases.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">PyTorch</span><span class="tag">Vertex AI</span><span class="tag">MongoDB</span>
               </div>
             </div>
           </a>
@@ -679,9 +679,11 @@
                     <li>Raised the precision of AI-detected sales signals, finding and removing a duplicate class about 35x larger than any fixed before and reaching 95.7% precision on litigation filtering, by building URL-normalized and entity-overlap dedup gates plus GPT-4.1 verifiers validated through offline replay and blind grading.</li>
                     <li>Turned SEC filings that ran for hours and re-queued night after night into extractions of 1.4 s or less on the largest filings, by rebuilding EDGAR ingestion on BullMQ with fan-out queues, per-filing retries and a shared rate limiter, and replacing a backtracking regex with a linear scan proven equivalent by 20,000-case fuzz tests.</li>
                     <li>Cut timing-out feed searches for the largest customers from 43 s to about 14 s by routing queries to indexed lookups, and built an Atlas Search path that reads 26–265x fewer rows with no loss of precision.</li>
+                    <li>Built CRM data cleansing across Salesforce, HubSpot and Foundation 365 that suggests and applies contact fixes (job changes, name corrections, archiving and enrichment), holding back about 15% of employer-change suggestions that contradicted email evidence and adding readable causes for the 59% of failed CRM writes that previously had none, by bringing the connectors to parity, consolidating and deduplicating suggestions, flagging previously rejected fixes for a six-month recheck, and leading an apply-failure diagnostics program.</li>
                     <li>Launched a new public-agency signal product end to end, now producing signals from 19 utility-district and agency sources, by building Firecrawl crawling, local PDF and OCR parsing, GPT extraction, and self-serve source onboarding that learns a site’s document pattern from a single example link.</li>
+                    <li>Built a hiring-signal pipeline that tells law-firm partners when companies they follow are recruiting for 14 senior legal, finance and executive roles across 36 locations in the US, Canada and Europe, by ingesting public job postings on admin-configured regional schedules that update live over Redis pub/sub, filtering false positives with title heuristics plus an LLM check reserved for ambiguous titles, and caching each decision in Redis so repeat titles aren’t re-classified on every thrice-daily run.</li>
                   </ul>
-                  <div class="flex flex-wrap gap-2 mt-6"><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">BullMQ</span><span class="tag">Redis</span><span class="tag">OpenAI</span><span class="tag">Atlas Search</span></div>
+                  <div class="flex flex-wrap gap-2 mt-6"><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">BullMQ</span><span class="tag">Redis</span><span class="tag">OpenAI</span><span class="tag">Atlas Search</span><span class="tag">Salesforce</span><span class="tag">HubSpot</span></div>
                 </div>
               </div>
             </div>
