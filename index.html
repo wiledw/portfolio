@@ -1,16 +1,1401 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/portfolio/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <title>Portfolio Website</title>
-    <script type="module" crossorigin src="/portfolio/assets/index-Bb4hPysI.js"></script>
-    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-C0e41Pqn.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>William Edwardo — Software Engineer</title>
+<meta name="description" content="William Edwardo Gunawan — Forward Deployed Engineer in Toronto. Full-stack software for clients, startups and real users.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='%230a0a0a'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js')</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #fafaf9;
+    --mute: #737373;
+    --line: #e7e5e4;
+    --ease: cubic-bezier(.19, 1, .22, 1);
+  }
+
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+  ::-moz-selection { background: var(--ink); color: var(--paper); }
+  ::selection { background: var(--ink); color: var(--paper); }
+
+  /* ---------- Layers ---------- */
+  #webgl {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    z-index: 0; pointer-events: none;
+  }
+  .grain {
+    position: fixed; inset: 0; z-index: 70; pointer-events: none; opacity: .045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  main { position: relative; z-index: 1; }
+
+  /* Nav: clear at the top, frosted bar once scrolled, tucks away while reading */
+  .site-nav {
+    color: var(--ink);
+    border-bottom: 1px solid transparent;
+    transition: transform .7s var(--ease), background-color .5s var(--ease), color .5s var(--ease), border-color .5s var(--ease);
+  }
+  .site-nav.is-scrolled {
+    background: rgba(250, 250, 249, .8);
+    backdrop-filter: blur(16px) saturate(140%);
+    border-bottom-color: rgba(10, 10, 10, .08);
+  }
+  .site-nav.is-dark { color: var(--paper); }
+  .site-nav.is-dark.is-scrolled { background: rgba(10, 10, 10, .72); border-bottom-color: rgba(250, 250, 249, .1); }
+  .site-nav.is-hidden { transform: translateY(-101%); }
+
+  /* ---------- Type ---------- */
+  .label {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px; line-height: 1.6;
+    letter-spacing: .18em; text-transform: uppercase;
+  }
+  .hero-title {
+    font-size: clamp(3rem, 7.6vw, 8rem);
+    line-height: .92; letter-spacing: -.045em;
+  }
+  .display-xl {
+    font-size: clamp(2.6rem, 6.4vw, 6.5rem);
+    line-height: .95; letter-spacing: -.04em;
+  }
+  .contact-title {
+    font-size: clamp(3rem, 7.5vw, 8rem);
+    line-height: .9; letter-spacing: -.05em;
+  }
+  .serif-accent {
+    font-family: "Instrument Serif", ui-serif, Georgia, serif;
+    font-style: italic; font-weight: 400;
+    letter-spacing: -.02em;
+  }
+
+  /* Line masks for text reveals */
+  .line { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.08em; }
+  .line-inner { display: block; will-change: transform; }
+
+  .js #hero { visibility: hidden; }
+
+  /* ---------- Micro-interactions ---------- */
+  .u-link {
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition: background-size .6s var(--ease);
+    padding-bottom: 2px;
+  }
+  .u-link:hover, .u-link:focus-visible { background-size: 100% 1px; }
+
+  .btn-pill {
+    position: relative; isolation: isolate; overflow: hidden;
+    display: inline-flex; align-items: center; gap: .75rem;
+    border: 1px solid currentColor; border-radius: 9999px;
+    padding: .9rem 1.5rem;
+    transition: color .45s var(--ease);
+  }
+  .btn-pill::before {
+    content: ""; position: absolute; z-index: -1;
+    left: -10%; width: 120%; height: 260%; top: 100%;
+    border-radius: 50%;
+    background: var(--ink);
+    transition: top .7s var(--ease), border-radius .7s var(--ease);
+  }
+  .btn-pill:hover, .btn-pill:focus-visible { color: var(--paper); }
+  .btn-pill:hover::before, .btn-pill:focus-visible::before { top: -80%; border-radius: 0; }
+
+  .cta-circle {
+    position: relative; isolation: isolate; overflow: hidden;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: clamp(150px, 17vw, 220px); aspect-ratio: 1;
+    border-radius: 9999px;
+    border: 1px solid rgba(250, 250, 249, .35);
+    color: var(--paper);
+    transition: color .45s var(--ease) .05s, border-color .45s var(--ease);
+  }
+  .cta-circle::before {
+    content: ""; position: absolute; z-index: -1;
+    left: -25%; width: 150%; height: 150%; top: 100%;
+    border-radius: 50%;
+    background: var(--paper);
+    transition: top .8s var(--ease), border-radius .8s var(--ease);
+  }
+  .cta-circle:hover, .cta-circle:focus-visible { color: var(--ink); border-color: var(--paper); }
+  .cta-circle:hover::before, .cta-circle:focus-visible::before { top: -25%; border-radius: 0; }
+
+  /* Project cards */
+  .card { transition: border-color .6s var(--ease); }
+  .card:hover { border-color: var(--ink); }
+  .card .photo {
+    transform: scale(1.001);
+    transition: transform 1.4s var(--ease);
+  }
+  .card:hover .photo { transform: scale(1.045); }
+  .card .logo { transition: transform 1.4s var(--ease); }
+  .card:hover .logo { transform: scale(1.06); }
+  .card .arrow {
+    position: relative; isolation: isolate; overflow: hidden;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; flex: none;
+    border: 1px solid var(--line); border-radius: 9999px;
+    transition: color .45s var(--ease), border-color .45s var(--ease);
+  }
+  .card .arrow::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: var(--ink); border-radius: inherit;
+    transform: scale(0);
+    transition: transform .6s var(--ease);
+  }
+  .card .arrow svg { transition: transform .6s var(--ease); }
+  .card:hover .arrow { color: var(--paper); border-color: var(--ink); }
+  .card:hover .arrow::before { transform: scale(1); }
+  .card:hover .arrow svg { transform: rotate(45deg); }
+
+  .tag {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase;
+    border: 1px solid var(--line); border-radius: 9999px;
+    padding: .3rem .7rem;
+    background: var(--paper);
+  }
+
+  /* Experience rows: ink fill rises on hover */
+  .xp-row {
+    position: relative; isolation: isolate;
+    transition: color .5s var(--ease);
+  }
+  .xp-row::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: var(--ink);
+    transform: scaleY(0); transform-origin: bottom;
+    transition: transform .6s var(--ease);
+  }
+  .xp-row:hover { color: var(--paper); }
+  .xp-row:hover::before { transform: scaleY(1); }
+  .xp-row:hover .xp-mute { color: #a3a3a3; }
+  .xp-row:hover .tag { background: transparent; border-color: #404040; color: #e5e5e5; }
+  .xp-promo { margin-top: .35rem; }
+  .xp-row:hover .xp-promo { color: var(--paper); }
+  .xp-row.is-open .xp-promo { color: rgba(10, 10, 10, .7); }
+
+  /* Open rows stay light so the details are easy to read */
+  .xp-row.is-open { color: var(--ink); }
+  .xp-row.is-open::before { transform: scaleY(0); }
+  .xp-row.is-open .xp-mute { color: var(--mute); }
+  .xp-row.is-open .tag { background: var(--paper); border-color: var(--line); color: var(--ink); }
+
+  .xp-toggle { cursor: pointer; }
+  .xp-icon { display: inline-block; transition: transform .6s var(--ease); }
+  .xp-row:hover .xp-icon { transform: translateX(6px); }
+  .xp-row.is-open .xp-icon { transform: rotate(90deg); }
+
+  .xp-panel {
+    display: grid; grid-template-rows: 0fr;
+    transition: grid-template-rows .7s var(--ease);
+  }
+  .xp-row.is-open .xp-panel { grid-template-rows: 1fr; }
+  .xp-panel-inner { overflow: hidden; min-height: 0; }
+  .xp-panel-inner > * { opacity: 0; transform: translateY(-8px); transition: opacity .5s var(--ease), transform .7s var(--ease); }
+  .xp-row.is-open .xp-panel-inner > * { opacity: 1; transform: none; transition-delay: .12s; }
+
+  .xp-bullets { display: grid; gap: .65rem; font-size: 15px; line-height: 1.65; color: #525252; max-width: 44rem; }
+  .xp-bullets li { position: relative; padding-left: 1.6rem; }
+  .xp-bullets li::before { content: "—"; position: absolute; left: 0; color: var(--mute); }
+
+
+  /* GitHub contribution calendar */
+  .gh-grid {
+    display: grid; grid-auto-flow: column;
+    grid-template-rows: repeat(7, 1fr); grid-auto-columns: 1fr;
+    gap: 3px;
+  }
+  /* Solid greys so the particle sphere doesn't show through the squares */
+  .gh-cell { aspect-ratio: 1; border-radius: 2px; background: #ebebea; }
+  .gh-cell[data-l="1"] { background: #c6c6c5; }
+  .gh-cell[data-l="2"] { background: #979796; }
+  .gh-cell[data-l="3"] { background: #5a5a59; }
+  .gh-cell[data-l="4"] { background: #0a0a0a; }
+  .gh-cell.is-pad { visibility: hidden; }
+  .gh-key { width: 10px; height: 10px; }
+  @media (max-width: 640px) {
+    .gh-scroll {
+      overflow-x: auto; scrollbar-width: none;
+      margin-inline: -20px; padding-inline: 20px;
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 56px);
+      mask-image: linear-gradient(to right, transparent, #000 56px);
+    }
+    .gh-scroll::-webkit-scrollbar { display: none; }
+    .gh-grid { width: 690px; }
+  }
+
+  /* Scroll cue */
+  .scroll-line {
+    width: 1px; height: 52px; position: relative; overflow: hidden;
+    background: rgba(10, 10, 10, .12);
+  }
+  .scroll-line::after {
+    content: ""; position: absolute; inset: 0; background: var(--ink);
+    animation: scroll-line 2.4s var(--ease) infinite;
+  }
+  @keyframes scroll-line {
+    0%     { transform: scaleY(0); transform-origin: top; }
+    50%    { transform: scaleY(1); transform-origin: top; }
+    50.01% { transform: scaleY(1); transform-origin: bottom; }
+    100%   { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  .pulse-dot { animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+
+  /* Cursor follower */
+  #cursor {
+    position: fixed; left: 0; top: 0; z-index: 80;
+    width: 10px; height: 10px; margin: -5px 0 0 -5px;
+    border-radius: 9999px; background: #fff;
+    mix-blend-mode: difference; pointer-events: none;
+    opacity: 0;
+  }
+
+  :focus-visible { outline: 1px solid currentColor; outline-offset: 4px; }
+  a, button { -webkit-tap-highlight-color: transparent; }
+
+  @media (hover: none) {
+    .xp-row:hover { color: inherit; }
+    .xp-row:hover::before { transform: scaleY(0); }
+    .xp-row:hover .xp-mute { color: var(--mute); }
+    .xp-row:hover .xp-promo { color: rgba(10, 10, 10, .7); }
+    .xp-row:hover .tag { background: var(--paper); border-color: var(--line); color: var(--ink); }
+    .xp-row:hover .xp-icon { transform: none; }
+    .xp-row.is-open .xp-icon { transform: rotate(90deg); }
+    .card:hover { border-color: var(--line); }
+    .card:hover .photo, .card:hover .logo { transform: none; }
+    .card:hover .arrow { color: inherit; border-color: var(--line); }
+    .card:hover .arrow::before { transform: scale(0); }
+    .card:hover .arrow svg { transform: none; }
+  }
+
+  .skip-link { position: absolute; left: -9999px; }
+  .skip-link:focus { left: 1rem; top: 1rem; z-index: 100; background: var(--ink); color: var(--paper); padding: .5rem 1rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+  }
+</style>
+  <link rel="stylesheet" crossorigin href="/portfolio/assets/index-BI9Y_RE_.css">
+</head>
+
+<body>
+<a href="#work" class="skip-link label">Skip to content</a>
+<canvas id="webgl" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div id="cursor" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header id="site-nav" class="site-nav fixed top-0 inset-x-0 z-50">
+  <nav class="max-w-[1440px] mx-auto flex items-center justify-between px-5 md:px-10 py-5 md:py-6 label" aria-label="Primary">
+    <a href="#top" class="inline-block" data-magnetic="0.25">William Edwardo Gunawan</a>
+    <ul class="flex items-center gap-5 md:gap-10">
+      <li class="hidden md:block"><a href="#work" class="u-link">Work</a></li>
+      <li class="hidden md:block"><a href="#about" class="u-link">About</a></li>
+      <li class="hidden md:block"><a href="#experience" class="u-link">Experience</a></li>
+      <li><a href="#contact" class="inline-block" data-magnetic="0.3"><span class="u-link">Contact</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section id="hero" class="relative min-h-[100svh] flex flex-col justify-end pt-28 pb-8 md:pb-12">
+    <div class="max-w-[1440px] w-full mx-auto px-5 md:px-10">
+      <p class="label text-mute mb-8 md:mb-12" data-hero-fade>
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-ink align-middle mr-2 pulse-dot"></span>
+        Forward Deployed Engineer
+      </p>
+
+      <h1 class="hero-title font-display font-medium">
+        <span class="line"><span class="line-inner">Building software</span></span>
+        <span class="line"><span class="line-inner">where the work</span></span>
+        <span class="line"><span class="line-inner serif-accent">actually happens.</span></span>
+      </h1>
+
+      <div class="mt-14 md:mt-24 pt-6 border-t border-line grid grid-cols-2 md:grid-cols-12 gap-x-6 gap-y-6 items-start md:items-end">
+        <div class="md:col-span-3" data-hero-fade>
+          <p class="label text-mute">Based in</p>
+          <p class="mt-1 text-[15px]">Toronto, Canada</p>
+        </div>
+        <div class="md:col-span-3" data-hero-fade>
+          <p class="label text-mute">Education</p>
+          <p class="mt-1 text-[15px]">Bachelor of Computer Science</p>
+        </div>
+        <div class="col-span-2 md:col-span-4" data-hero-fade>
+          <p class="label text-mute">Focus</p>
+          <p class="mt-1 text-[15px]">Full-stack products, applied AI, and owning what ships.</p>
+        </div>
+        <a href="#work" class="hidden md:flex md:col-span-2 justify-end items-end gap-4 label" data-hero-fade aria-label="Scroll to selected work">
+          Scroll
+          <span class="scroll-line"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SELECTED WORK ============ -->
+  <section id="work" class="py-20 md:py-44" aria-labelledby="work-title">
+    <div class="max-w-[1440px] mx-auto px-5 md:px-10">
+      <div class="grid md:grid-cols-12 gap-6 mb-14 md:mb-20 items-end">
+        <div class="md:col-span-7">
+          <p class="label text-mute mb-6" data-reveal>(01) — Selected Work</p>
+          <h2 id="work-title" class="display-xl font-display font-medium" data-split>
+            <span class="line"><span class="line-inner">Shipped, used,</span></span>
+            <span class="line"><span class="line-inner"><span class="serif-accent">and still running.</span></span></span>
+          </h2>
+        </div>
+        <p class="md:col-span-4 md:col-start-9 text-[15px] leading-relaxed text-mute max-w-sm" data-reveal>
+          A live client platform I build and run on my own, four award-winning hackathon builds, and a live look at what I’ve been shipping on GitHub.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+
+        <!-- Featured: Central Auto Sales -->
+        <article class="card md:col-span-12 border border-line bg-paper" data-reveal>
+          <a href="https://www.central-autosales.com/" target="_blank" rel="noopener noreferrer" class="grid md:grid-cols-12 h-full" data-cursor>
+            <div class="relative md:col-span-7 bg-black flex items-center justify-center overflow-hidden aspect-[16/10]">
+              <img src="/portfolio/img/centralautosales.png" alt="Central Auto Sales logo" class="logo w-44 md:w-72" loading="lazy">
+              <span class="absolute top-5 left-5 label text-white/60">01</span>
+              <span class="absolute top-5 right-5 label text-white flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-white pulse-dot"></span>Live
+              </span>
+            </div>
+            <div class="md:col-span-5 p-6 md:p-10 flex flex-col justify-between gap-6">
+              <div class="flex items-start justify-between gap-6">
+                <div>
+                  <p class="label text-mute">Client · 2026 — Present</p>
+                  <h3 class="mt-3 font-display font-medium text-3xl md:text-5xl tracking-[-.035em]">Central Auto Sales</h3>
+                </div>
+                <span class="arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.3"/></svg>
+                </span>
+              </div>
+              <p class="text-[15px] md:text-base leading-relaxed text-neutral-600 max-w-xl">
+                Production platform for a multi-location used car dealership. Searchable inventory, side-by-side comparison, an admin dashboard and a daily new-arrivals newsletter. I’m the only engineer: I built it, ship its features, and stay on call.
+              </p>
+              <dl class="grid grid-cols-2 sm:grid-cols-3 gap-4 border-t border-line pt-5">
+                <div><dt class="label text-mute">Role</dt><dd class="mt-1 text-sm">Full-Stack Engineer</dd></div>
+                <div><dt class="label text-mute">Scope</dt><dd class="mt-1 text-sm">Design, build, run</dd></div>
+                <div class="col-span-2 sm:col-span-1"><dt class="label text-mute">Stack</dt><dd class="mt-1 text-sm">Next.js · Supabase · Vercel</dd></div>
+              </dl>
+            </div>
+          </a>
+        </article>
+
+        <div class="md:col-span-12 mt-16 md:mt-28 flex items-end justify-between gap-6 border-b border-ink/80 pb-5" data-reveal>
+          <h3 class="label">Hackathon wins</h3>
+          <span class="label text-mute">04 projects</span>
+        </div>
+
+        <!-- Magic Quill -->
+        <article class="card md:col-span-5 md:mt-24 border border-line bg-paper" data-reveal>
+          <a href="https://devpost.com/software/magic-quill" target="_blank" rel="noopener noreferrer" class="flex flex-col h-full" data-cursor>
+            <div class="relative overflow-hidden aspect-[16/10] bg-black">
+              <img src="/portfolio/img/magicquil.PNG" alt="Magic Quill wordmark" class="photo absolute inset-0 w-full h-full object-contain p-10 md:p-14" loading="lazy">
+              <span class="absolute top-5 left-5 label text-white mix-blend-difference">02</span>
+            </div>
+            <div class="p-6 md:p-8 flex flex-col gap-5 flex-1">
+              <div class="flex items-start justify-between gap-6">
+                <div>
+                  <p class="label text-mute">Hackathon winner</p>
+                  <h3 class="mt-3 font-display font-medium text-2xl md:text-3xl tracking-[-.03em]">Magic Quill</h3>
+                </div>
+                <span class="arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.3"/></svg>
+                </span>
+              </div>
+              <p class="text-[15px] leading-relaxed text-neutral-600">
+                Real-time lecture transcription that turns speech, slides, diagrams and equations into clean, organized notes, exported as Markdown and PDF.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="tag">Next.js</span><span class="tag">Gemini</span><span class="tag">OCR</span><span class="tag">LaTeX</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- ALI -->
+        <article class="card md:col-span-7 border border-line bg-paper" data-reveal>
+          <a href="https://dorahacks.io/buidl/17822" target="_blank" rel="noopener noreferrer" class="flex flex-col h-full" data-cursor>
+            <div class="relative overflow-hidden aspect-[16/10] bg-white border-b border-line">
+              <img src="/portfolio/img/ali.png" alt="ALI logo" class="photo absolute inset-0 w-full h-full object-contain p-12 md:p-20" loading="lazy">
+              <span class="absolute top-5 left-5 label text-white mix-blend-difference">03</span>
+            </div>
+            <div class="p-6 md:p-8 flex flex-col gap-5 flex-1">
+              <div class="flex items-start justify-between gap-6">
+                <div>
+                  <p class="label text-mute">Hack49 · Winner</p>
+                  <h3 class="mt-3 font-display font-medium text-2xl md:text-3xl tracking-[-.03em]">ALI</h3>
+                </div>
+                <span class="arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.3"/></svg>
+                </span>
+              </div>
+              <p class="text-[15px] leading-relaxed text-neutral-600">
+                An AI companion app that screens for early signs of Alzheimer’s through natural speech, while keeping elderly users company and less isolated.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="tag">React Native</span><span class="tag">FastAPI</span><span class="tag">PyTorch</span><span class="tag">Wav2Vec</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- TrashCam -->
+        <article class="card md:col-span-7 border border-line bg-paper" data-reveal>
+          <a href="https://devpost.com/software/trashcam-rwtjqn" target="_blank" rel="noopener noreferrer" class="flex flex-col h-full" data-cursor>
+            <div class="relative overflow-hidden aspect-[16/10] bg-white border-b border-line">
+              <img src="/portfolio/img/trashcam.png" alt="TrashCam logo" class="photo absolute inset-0 w-full h-full object-contain p-12 md:p-20" loading="lazy">
+              <span class="absolute top-5 left-5 label text-white mix-blend-difference">04</span>
+            </div>
+            <div class="p-6 md:p-8 flex flex-col gap-5 flex-1">
+              <div class="flex items-start justify-between gap-6">
+                <div>
+                  <p class="label text-mute">HackTheValley 9 · Winner</p>
+                  <h3 class="mt-3 font-display font-medium text-2xl md:text-3xl tracking-[-.03em]">TrashCam</h3>
+                </div>
+                <span class="arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.3"/></svg>
+                </span>
+              </div>
+              <p class="text-[15px] leading-relaxed text-neutral-600">
+                Real-time waste sorting through your camera. Object recognition with Google Cloud Vision and COCO-SSD tells you which bin each item belongs in.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">PostgreSQL</span><span class="tag">Gemini</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- SageAI -->
+        <article class="card md:col-span-5 md:mt-24 border border-line bg-paper" data-reveal>
+          <a href="https://devpost.com/software/sageai" target="_blank" rel="noopener noreferrer" class="flex flex-col h-full" data-cursor>
+            <div class="relative overflow-hidden aspect-[16/10] bg-line">
+              <img src="/portfolio/img/sageai.jpeg" alt="SageAI symptom analysis screen" class="photo absolute inset-0 w-full h-full object-cover" loading="lazy">
+              <span class="absolute top-5 left-5 label text-white mix-blend-difference">05</span>
+            </div>
+            <div class="p-6 md:p-8 flex flex-col gap-5 flex-1">
+              <div class="flex items-start justify-between gap-6">
+                <div>
+                  <p class="label text-mute">GenAI Genesis (Google) · Winner</p>
+                  <h3 class="mt-3 font-display font-medium text-2xl md:text-3xl tracking-[-.03em]">SageAI</h3>
+                </div>
+                <span class="arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.3"/></svg>
+                </span>
+              </div>
+              <p class="text-[15px] leading-relaxed text-neutral-600">
+                An AI diagnostic tool that reads written symptoms with BERT and turns uploaded images into descriptions with Google Imagen, reaching over 90% accuracy across 41 diseases.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">PyTorch</span><span class="tag">Vertex AI</span><span class="tag">MongoDB</span>
+              </div>
+            </div>
+          </a>
+        </article>
+      </div>
+
+      <!-- GitHub activity -->
+      <div class="mt-24 md:mt-36">
+        <div id="gh" data-reveal>
+          <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
+            <div>
+              <p class="label text-mute">GitHub activity — last 12 months</p>
+              <p class="mt-3 font-display font-medium text-3xl md:text-5xl tracking-[-.04em]">
+                <span id="gh-total" class="tabular-nums">—</span> <span class="serif-accent text-mute">contributions</span>
+              </p>
+            </div>
+            <a href="https://github.com/wiledw" target="_blank" rel="noopener noreferrer" class="label u-link">@wiledw ↗</a>
+          </div>
+          <div class="gh-scroll"><div id="gh-grid" class="gh-grid" role="img" aria-label="GitHub contribution calendar for the last 12 months"></div></div>
+          <div class="mt-3 flex items-center justify-end gap-1.5 label text-mute" aria-hidden="true">
+            Less
+            <span class="gh-cell gh-key" data-l="0"></span><span class="gh-cell gh-key" data-l="1"></span><span class="gh-cell gh-key" data-l="2"></span><span class="gh-cell gh-key" data-l="3"></span><span class="gh-cell gh-key" data-l="4"></span>
+            More
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT & PHILOSOPHY ============ -->
+  <section id="about" class="py-20 md:py-44" aria-labelledby="about-title">
+    <div class="max-w-[1440px] mx-auto px-5 md:px-10 grid md:grid-cols-12 gap-x-6 gap-y-20">
+
+      <div class="md:col-span-5 md:sticky md:top-28 self-start">
+        <p class="label text-mute mb-6" data-reveal>(02) — About</p>
+        <h2 id="about-title" class="display-xl font-display font-medium" data-split>
+          <span class="line"><span class="line-inner">Engineering</span></span>
+          <span class="line"><span class="line-inner">is an act</span></span>
+          <span class="line"><span class="line-inner serif-accent">of trust.</span></span>
+        </h2>
+        <p class="mt-10 text-[15px] md:text-base leading-relaxed text-neutral-600 max-w-md" data-reveal>
+          I’m William Edwardo Gunawan, a Forward Deployed Engineer in Toronto. I graduated from Toronto Metropolitan University with a Bachelor of Computer Science with Distinction, shipped at startups like Fiscal AI and Postilize, and build and run production software for clients. I work directly with the teams who use what I build.
+        </p>
+        <p class="mt-6 label text-mute" data-reveal>Off-screen — music, games, travel, food</p>
+      </div>
+
+      <div class="md:col-span-6 md:col-start-7">
+        <p class="label text-mute mb-6" data-reveal>Philosophy</p>
+        <ol class="border-t border-line">
+          <li class="py-8 md:py-10 border-b border-line grid grid-cols-[3rem_1fr] md:grid-cols-[4rem_1fr] gap-4" data-reveal>
+            <span class="label text-mute pt-2">01</span>
+            <div>
+              <h3 class="font-display font-medium text-2xl md:text-3xl tracking-[-.03em]">Start with the user, not the stack.</h3>
+              <p class="mt-3 text-[15px] leading-relaxed text-neutral-600 max-w-lg">I sit close to the people who will use the software. Their workflow decides the architecture, and the tools come after.</p>
+            </div>
+          </li>
+          <li class="py-8 md:py-10 border-b border-line grid grid-cols-[3rem_1fr] md:grid-cols-[4rem_1fr] gap-4" data-reveal>
+            <span class="label text-mute pt-2">02</span>
+            <div>
+              <h3 class="font-display font-medium text-2xl md:text-3xl tracking-[-.03em]">Ship, then sharpen.</h3>
+              <p class="mt-3 text-[15px] leading-relaxed text-neutral-600 max-w-lg">Small releases, real feedback, steady iteration. A working version in front of people beats a perfect plan nobody has seen.</p>
+            </div>
+          </li>
+          <li class="py-8 md:py-10 border-b border-line grid grid-cols-[3rem_1fr] md:grid-cols-[4rem_1fr] gap-4" data-reveal>
+            <span class="label text-mute pt-2">03</span>
+            <div>
+              <h3 class="font-display font-medium text-2xl md:text-3xl tracking-[-.03em]">Own it after launch.</h3>
+              <p class="mt-3 text-[15px] leading-relaxed text-neutral-600 max-w-lg">Monitoring, on-call, fixing what breaks. The job doesn’t end at deploy. That’s where people start depending on it.</p>
+            </div>
+          </li>
+        </ol>
+
+        <p class="label text-mute mt-20 mb-6" data-reveal>Capabilities</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-10 border-t border-line pt-8">
+          <div data-reveal>
+            <h3 class="label">Languages</h3>
+            <ul class="mt-4 space-y-1.5 text-[15px] text-neutral-700">
+              <li>TypeScript</li><li>JavaScript</li><li>Python</li><li>Java</li><li>SQL</li><li>C#</li>
+            </ul>
+          </div>
+          <div data-reveal>
+            <h3 class="label">Frameworks</h3>
+            <ul class="mt-4 space-y-1.5 text-[15px] text-neutral-700">
+              <li>Next.js</li><li>React</li><li>Node.js</li><li>FastAPI</li><li>Django</li><li>TensorFlow</li>
+            </ul>
+          </div>
+          <div data-reveal>
+            <h3 class="label">Platforms</h3>
+            <ul class="mt-4 space-y-1.5 text-[15px] text-neutral-700">
+              <li>AWS</li><li>Azure</li><li>GCP</li><li>Supabase</li><li>Docker</li><li>Redis</li><li>Claude</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience" class="py-20 md:py-44" aria-labelledby="xp-title">
+    <div class="max-w-[1440px] mx-auto px-5 md:px-10">
+      <div class="grid md:grid-cols-12 gap-6 mb-14 md:mb-20 items-end">
+        <div class="md:col-span-8">
+          <p class="label text-mute mb-6" data-reveal>(03) — Experience</p>
+          <h2 id="xp-title" class="display-xl font-display font-medium" data-split>
+            <span class="line"><span class="line-inner">Six years of</span></span>
+            <span class="line"><span class="line-inner serif-accent">building in teams.</span></span>
+          </h2>
+        </div>
+      </div>
+
+      <ol class="border-t border-ink/80" id="xp-list">
+        <li class="xp-row border-b border-line" data-reveal>
+          <button type="button" class="xp-toggle w-full text-left grid grid-cols-12 gap-x-4 gap-y-1 py-6 md:py-8 px-3 md:px-5 items-baseline" aria-expanded="false" aria-controls="xp-1">
+            <span class="col-span-12 md:col-span-3 label xp-mute text-mute">Nov 2026 — Present</span>
+            <span class="col-span-12 md:col-span-5 font-display font-medium text-xl md:text-3xl tracking-[-.03em]">Forward Deployed Engineer</span>
+            <span class="col-span-10 md:col-span-3 text-[15px] xp-mute text-mute">Greenlight Consulting</span>
+            <span class="col-span-2 md:col-span-1 text-right"><span class="xp-icon" aria-hidden="true">→</span></span>
+          </button>
+          <div class="xp-panel" id="xp-1" role="region" aria-hidden="true" inert>
+            <div class="xp-panel-inner">
+              <div class="grid grid-cols-12 gap-x-4 px-3 md:px-5 pb-8 md:pb-10">
+                <div class="col-span-12 md:col-span-8 md:col-start-4">
+                  <ul class="xp-bullets">
+                    <li>Embedded with client teams to scope real problems on the ground, then build and ship the software that solves them.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="xp-row border-b border-line" data-reveal>
+          <button type="button" class="xp-toggle w-full text-left grid grid-cols-12 gap-x-4 gap-y-1 py-6 md:py-8 px-3 md:px-5 items-baseline" aria-expanded="false" aria-controls="xp-2">
+            <span class="col-span-12 md:col-span-3 label xp-mute text-mute">Jan 2026 — Present</span>
+            <span class="col-span-12 md:col-span-5 font-display font-medium text-xl md:text-3xl tracking-[-.03em]">Full-Stack Engineer <span class="label xp-mute text-mute align-middle ml-1">Client</span></span>
+            <span class="col-span-10 md:col-span-3 text-[15px] xp-mute text-mute">Central Auto Sales</span>
+            <span class="col-span-2 md:col-span-1 text-right"><span class="xp-icon" aria-hidden="true">→</span></span>
+          </button>
+          <div class="xp-panel" id="xp-2" role="region" aria-hidden="true" inert>
+            <div class="xp-panel-inner">
+              <div class="grid grid-cols-12 gap-x-4 px-3 md:px-5 pb-8 md:pb-10">
+                <div class="col-span-12 md:col-span-8 md:col-start-4">
+                  <ul class="xp-bullets">
+                    <li>Sole engineer on the dealership’s production website: designed, built and deployed it end to end.</li>
+                    <li>Built searchable multi-location inventory with advanced filters and side-by-side vehicle comparison.</li>
+                    <li>Built an admin dashboard for vehicles, locations and image uploads, plus a daily new-arrivals newsletter and push notifications.</li>
+                    <li>On call for production issues and new feature requests.</li>
+                  </ul>
+                  <div class="flex flex-wrap gap-2 mt-6"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Supabase</span><span class="tag">Vercel</span><span class="tag">Resend</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="xp-row border-b border-line" data-reveal>
+          <button type="button" class="xp-toggle w-full text-left grid grid-cols-12 gap-x-4 gap-y-1 py-6 md:py-8 px-3 md:px-5 items-baseline" aria-expanded="false" aria-controls="xp-3">
+            <span class="col-span-12 md:col-span-3 label xp-mute text-mute">Aug 2025 — Nov 2026<span class="block text-ink/70 xp-promo">Promoted Aug 2026</span></span>
+            <span class="col-span-12 md:col-span-5 font-display font-medium text-xl md:text-3xl tracking-[-.03em]">Software Engineer II</span>
+            <span class="col-span-10 md:col-span-3 text-[15px] xp-mute text-mute">Postilize</span>
+            <span class="col-span-2 md:col-span-1 text-right"><span class="xp-icon" aria-hidden="true">→</span></span>
+          </button>
+          <div class="xp-panel" id="xp-3" role="region" aria-hidden="true" inert>
+            <div class="xp-panel-inner">
+              <div class="grid grid-cols-12 gap-x-4 px-3 md:px-5 pb-8 md:pb-10">
+                <div class="col-span-12 md:col-span-8 md:col-start-4">
+                  <ul class="xp-bullets">
+                    <li>Raised the precision of AI-detected sales signals, finding and removing a duplicate class about 35x larger than any fixed before and reaching 95.7% precision on litigation filtering, by building URL-normalized and entity-overlap dedup gates plus GPT-4.1 verifiers validated through offline replay and blind grading.</li>
+                    <li>Turned SEC filings that ran for hours and re-queued night after night into extractions of 1.4 s or less on the largest filings, by rebuilding EDGAR ingestion on BullMQ with fan-out queues, per-filing retries and a shared rate limiter, and replacing a backtracking regex with a linear scan proven equivalent by 20,000-case fuzz tests.</li>
+                    <li>Cut timing-out feed searches for the largest customers from 43 s to about 14 s by routing queries to indexed lookups, and built an Atlas Search path that reads 26–265x fewer rows with no loss of precision.</li>
+                    <li>Built CRM data cleansing across Salesforce, HubSpot and Foundation 365 that suggests and applies contact fixes (job changes, name corrections, archiving and enrichment), holding back about 15% of employer-change suggestions that contradicted email evidence and adding readable causes for the 59% of failed CRM writes that previously had none, by bringing the connectors to parity, consolidating and deduplicating suggestions, flagging previously rejected fixes for a six-month recheck, and leading an apply-failure diagnostics program.</li>
+                    <li>Launched a new public-agency signal product end to end, now producing signals from 19 utility-district and agency sources, by building Firecrawl crawling, local PDF and OCR parsing, GPT extraction, and self-serve source onboarding that learns a site’s document pattern from a single example link.</li>
+                    <li>Built a hiring-signal pipeline that tells law-firm partners when companies they follow are recruiting for 14 senior legal, finance and executive roles across 36 locations in the US, Canada and Europe, by ingesting public job postings on admin-configured regional schedules that update live over Redis pub/sub, filtering false positives with title heuristics plus an LLM check reserved for ambiguous titles, and caching each decision in Redis so repeat titles aren’t re-classified on every thrice-daily run.</li>
+                  </ul>
+                  <div class="flex flex-wrap gap-2 mt-6"><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">BullMQ</span><span class="tag">Redis</span><span class="tag">OpenAI</span><span class="tag">Atlas Search</span><span class="tag">Salesforce</span><span class="tag">HubSpot</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="xp-row border-b border-line" data-reveal>
+          <button type="button" class="xp-toggle w-full text-left grid grid-cols-12 gap-x-4 gap-y-1 py-6 md:py-8 px-3 md:px-5 items-baseline" aria-expanded="false" aria-controls="xp-4">
+            <span class="col-span-12 md:col-span-3 label xp-mute text-mute">Apr 2025 — Jul 2025</span>
+            <span class="col-span-12 md:col-span-5 font-display font-medium text-xl md:text-3xl tracking-[-.03em]">Software Engineer</span>
+            <span class="col-span-10 md:col-span-3 text-[15px] xp-mute text-mute">Fiscal AI</span>
+            <span class="col-span-2 md:col-span-1 text-right"><span class="xp-icon" aria-hidden="true">→</span></span>
+          </button>
+          <div class="xp-panel" id="xp-4" role="region" aria-hidden="true" inert>
+            <div class="xp-panel-inner">
+              <div class="grid grid-cols-12 gap-x-4 px-3 md:px-5 pb-8 md:pb-10">
+                <div class="col-span-12 md:col-span-8 md:col-start-4">
+                  <ul class="xp-bullets">
+                    <li>Built a scalable Python ETL pipeline that extracts and processes SEC EDGAR filings for 4,000+ U.S. companies, covering up to 40 years of history.</li>
+                    <li>Reached 98% extraction accuracy for employee counts and stock splits with a multi-step, chained Gemini LLM pipeline.</li>
+                    <li>Improved parser performance by 30% through weekly batch testing with analysts, 100 companies at a time.</li>
+                    <li>Automated data refreshes with AWS Lambda, S3 and Parquet, so new filings update the datasets with no manual work.</li>
+                  </ul>
+                  <div class="flex flex-wrap gap-2 mt-6"><span class="tag">Python</span><span class="tag">Gemini</span><span class="tag">AWS Lambda</span><span class="tag">S3</span><span class="tag">Parquet</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="xp-row border-b border-line" data-reveal>
+          <button type="button" class="xp-toggle w-full text-left grid grid-cols-12 gap-x-4 gap-y-1 py-6 md:py-8 px-3 md:px-5 items-baseline" aria-expanded="false" aria-controls="xp-5">
+            <span class="col-span-12 md:col-span-3 label xp-mute text-mute">Feb 2025 — May 2025</span>
+            <span class="col-span-12 md:col-span-5 font-display font-medium text-xl md:text-3xl tracking-[-.03em]">Front-end Developer</span>
+            <span class="col-span-10 md:col-span-3 text-[15px] xp-mute text-mute">MedPass</span>
+            <span class="col-span-2 md:col-span-1 text-right"><span class="xp-icon" aria-hidden="true">→</span></span>
+          </button>
+          <div class="xp-panel" id="xp-5" role="region" aria-hidden="true" inert>
+            <div class="xp-panel-inner">
+              <div class="grid grid-cols-12 gap-x-4 px-3 md:px-5 pb-8 md:pb-10">
+                <div class="col-span-12 md:col-span-8 md:col-start-4">
+                  <ul class="xp-bullets">
+                    <li>Worked with project management and marketing to turn Figma designs into scalable web applications.</li>
+                    <li>Set front-end testing standards with Jest and React Testing Library, reaching over 90% coverage on critical components and reducing post-deploy bugs.</li>
+                  </ul>
+                  <div class="flex flex-wrap gap-2 mt-6"><span class="tag">React</span><span class="tag">Jest</span><span class="tag">React Testing Library</span><span class="tag">Figma</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="xp-row border-b border-line" data-reveal>
+          <button type="button" class="xp-toggle w-full text-left grid grid-cols-12 gap-x-4 gap-y-1 py-6 md:py-8 px-3 md:px-5 items-baseline" aria-expanded="false" aria-controls="xp-6">
+            <span class="col-span-12 md:col-span-3 label xp-mute text-mute">May 2024 — Aug 2024</span>
+            <span class="col-span-12 md:col-span-5 font-display font-medium text-xl md:text-3xl tracking-[-.03em]">Software Engineer Intern</span>
+            <span class="col-span-10 md:col-span-3 text-[15px] xp-mute text-mute">Esportium</span>
+            <span class="col-span-2 md:col-span-1 text-right"><span class="xp-icon" aria-hidden="true">→</span></span>
+          </button>
+          <div class="xp-panel" id="xp-6" role="region" aria-hidden="true" inert>
+            <div class="xp-panel-inner">
+              <div class="grid grid-cols-12 gap-x-4 px-3 md:px-5 pb-8 md:pb-10">
+                <div class="col-span-12 md:col-span-8 md:col-start-4">
+                  <ul class="xp-bullets">
+                    <li>Helped design and build a scalable full-stack platform with C#, ASP.NET, TypeScript, React and AWS RDS.</li>
+                    <li>Designed a RESTful API between front end and back end and ran weekly testing with beta users, improving performance by 30% and halving average response time.</li>
+                    <li>Wrote unit tests for controllers and services with Moq and xUnit, improving code coverage by 70%.</li>
+                  </ul>
+                  <div class="flex flex-wrap gap-2 mt-6"><span class="tag">C#</span><span class="tag">ASP.NET</span><span class="tag">React</span><span class="tag">AWS RDS</span><span class="tag">xUnit</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="xp-row border-b border-line" data-reveal>
+          <button type="button" class="xp-toggle w-full text-left grid grid-cols-12 gap-x-4 gap-y-1 py-6 md:py-8 px-3 md:px-5 items-baseline" aria-expanded="false" aria-controls="xp-7">
+            <span class="col-span-12 md:col-span-3 label xp-mute text-mute">May 2023 — Aug 2023</span>
+            <span class="col-span-12 md:col-span-5 font-display font-medium text-xl md:text-3xl tracking-[-.03em]">Full Stack Developer Intern</span>
+            <span class="col-span-10 md:col-span-3 text-[15px] xp-mute text-mute">Cove</span>
+            <span class="col-span-2 md:col-span-1 text-right"><span class="xp-icon" aria-hidden="true">→</span></span>
+          </button>
+          <div class="xp-panel" id="xp-7" role="region" aria-hidden="true" inert>
+            <div class="xp-panel-inner">
+              <div class="grid grid-cols-12 gap-x-4 px-3 md:px-5 pb-8 md:pb-10">
+                <div class="col-span-12 md:col-span-8 md:col-start-4">
+                  <ul class="xp-bullets">
+                    <li>Built a scalable full-stack application with a React front end and a Node.js back end.</li>
+                    <li>Worked with cross-functional teams to add testing to the CI/CD pipeline, cutting deployment time by 50% and production issues by 20%.</li>
+                    <li>Set up and maintained the MongoDB database for storing and querying application data.</li>
+                  </ul>
+                  <div class="flex flex-wrap gap-2 mt-6"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">CI/CD</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="xp-row border-b border-line" data-reveal>
+          <button type="button" class="xp-toggle w-full text-left grid grid-cols-12 gap-x-4 gap-y-1 py-6 md:py-8 px-3 md:px-5 items-baseline" aria-expanded="false" aria-controls="xp-8">
+            <span class="col-span-12 md:col-span-3 label xp-mute text-mute">Jan 2020 — Apr 2022</span>
+            <span class="col-span-12 md:col-span-5 font-display font-medium text-xl md:text-3xl tracking-[-.03em]">Software Engineer Intern</span>
+            <span class="col-span-10 md:col-span-3 text-[15px] xp-mute text-mute">PT. Rapier Technology International</span>
+            <span class="col-span-2 md:col-span-1 text-right"><span class="xp-icon" aria-hidden="true">→</span></span>
+          </button>
+          <div class="xp-panel" id="xp-8" role="region" aria-hidden="true" inert>
+            <div class="xp-panel-inner">
+              <div class="grid grid-cols-12 gap-x-4 px-3 md:px-5 pb-8 md:pb-10">
+                <div class="col-span-12 md:col-span-8 md:col-start-4">
+                  <ul class="xp-bullets">
+                    <li>Built and maintained RESTful APIs with Flask and front-end components with React.</li>
+                    <li>Integrated AWS S3 for file storage, using pre-signed URLs to keep uploads secure.</li>
+                    <li>Set up a GitHub Actions CI/CD pipeline for automated testing and linting, reducing deployment friction by 40%.</li>
+                  </ul>
+                  <div class="flex flex-wrap gap-2 mt-6"><span class="tag">Flask</span><span class="tag">React</span><span class="tag">AWS S3</span><span class="tag">GitHub Actions</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <footer id="contact" class="relative text-paper min-h-[100svh] flex flex-col justify-between pt-32 md:pt-44 pb-8" aria-labelledby="contact-title">
+    <div class="max-w-[1440px] w-full mx-auto px-5 md:px-10">
+      <p class="label text-white/50 mb-8" data-reveal>(04) — Contact</p>
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
+        <h2 id="contact-title" class="contact-title font-display font-medium" data-split>
+          <span class="line"><span class="line-inner">Let’s build</span></span>
+          <span class="line"><span class="line-inner">something <span class="serif-accent">real.</span></span></span>
+        </h2>
+        <div class="shrink-0" data-reveal>
+          <a href="mailto:william.edwardo@gmail.com" class="cta-circle label" data-magnetic="0.45" data-cursor>
+            <span class="inline-flex items-center gap-2" data-magnetic-inner>
+              Get in touch
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" stroke-width="1.3"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-[1440px] w-full mx-auto px-5 md:px-10 mt-24">
+      <div class="grid grid-cols-2 md:grid-cols-12 gap-x-6 gap-y-10 border-t border-white/15 pt-8">
+        <div class="col-span-2 md:col-span-5" data-reveal>
+          <p class="label text-white/50">Email</p>
+          <a href="mailto:william.edwardo@gmail.com" class="mt-2 inline-block text-[15px] u-link">william.edwardo@gmail.com</a>
+        </div>
+        <div class="col-span-2 md:col-span-4" data-reveal>
+          <p class="label text-white/50">Elsewhere</p>
+          <ul class="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-[15px]">
+            <li><a href="https://www.linkedin.com/in/william-edwardo-gunawan/" target="_blank" rel="noopener noreferrer" class="u-link">LinkedIn</a></li>
+            <li><a href="https://github.com/wiledw/" target="_blank" rel="noopener noreferrer" class="u-link">GitHub</a></li>
+            <li><a href="https://www.instagram.com/wil_edw/" target="_blank" rel="noopener noreferrer" class="u-link">Instagram</a></li>
+          </ul>
+        </div>
+        <div class="col-span-2 md:col-span-3" data-reveal>
+          <p class="label text-white/50">Local time</p>
+          <p class="mt-2 text-[15px] tabular-nums"><span id="clock">--:--</span> Toronto</p>
+        </div>
+      </div>
+
+      <div class="mt-16 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[13px] text-white/45">
+        <span>© 2024 William Edwardo Gunawan. <span class="block sm:inline">Designed &amp; built in Toronto.</span></span>
+        <a href="#top" class="text-paper inline-flex items-center gap-2 self-start sm:self-auto" data-magnetic="0.3">
+          <span class="u-link">Back to top</span>
+          <span aria-hidden="true">↑</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  const hero = document.getElementById('hero');
+  const contact = document.getElementById('contact');
+
+
+  // Toronto local time in the footer
+  const clock = document.getElementById('clock');
+  const timeFmt = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', hour: '2-digit', minute: '2-digit', hour12: false });
+  const tick = () => { clock.textContent = timeFmt.format(new Date()); };
+  tick();
+  setInterval(tick, 15000);
+
+  const refreshScroll = () => window.ScrollTrigger && ScrollTrigger.refresh();
+
+  /* ------------------------------------------------------------------
+     Nav state: frosted once scrolled, dark over the contact section,
+     hidden while scrolling down and back as soon as you scroll up
+  ------------------------------------------------------------------ */
+  const nav = document.getElementById('site-nav');
+  let lastY = scrollY;
+  let navTicking = false;
+  const updateNav = () => {
+    const y = scrollY;
+    nav.classList.toggle('is-scrolled', y > 24);
+    nav.classList.toggle('is-dark', contact.getBoundingClientRect().top <= nav.offsetHeight / 2);
+    if (y < 240 || y < lastY - 2 || nav.matches(':focus-within')) nav.classList.remove('is-hidden');
+    else if (y > lastY + 2) nav.classList.add('is-hidden');
+    lastY = y;
+    navTicking = false;
+  };
+  addEventListener('scroll', () => {
+    if (!navTicking) { navTicking = true; requestAnimationFrame(updateNav); }
+  }, { passive: true });
+  updateNav();
+
+  /* ------------------------------------------------------------------
+     Experience: rows expand to show details
+  ------------------------------------------------------------------ */
+  document.querySelectorAll('.xp-toggle').forEach((btn) => {
+    const row = btn.closest('.xp-row');
+    const panel = document.getElementById(btn.getAttribute('aria-controls'));
+    btn.addEventListener('click', () => {
+      const open = !row.classList.contains('is-open');
+      row.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', String(open));
+      panel.setAttribute('aria-hidden', String(!open));
+      panel.inert = !open;
+    });
+    // Positions below the row move once it finishes resizing
+    panel.addEventListener('transitionend', (e) => {
+      if (e.target === panel && e.propertyName === 'grid-template-rows') refreshScroll();
+    });
+  });
+
+  /* ------------------------------------------------------------------
+     GitHub contributions, fetched live on every visit
+  ------------------------------------------------------------------ */
+  const ghBlock = document.getElementById('gh');
+  const ghGrid = document.getElementById('gh-grid');
+  const ghTotal = document.getElementById('gh-total');
+  fetch('https://github-contributions-api.jogruber.de/v4/wiledw?y=last')
+    .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+    .then((data) => {
+      const days = data.contributions || [];
+      if (!days.length) throw new Error('no contribution data');
+
+      // Weeks start on Sunday, so pad the first column up to the first day
+      const pad = new Date(days[0].date + 'T00:00:00Z').getUTCDay();
+      const dateFmt = new Intl.DateTimeFormat('en-CA', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+      const frag = document.createDocumentFragment();
+      for (let i = 0; i < pad; i++) {
+        const c = document.createElement('span');
+        c.className = 'gh-cell is-pad';
+        frag.appendChild(c);
+      }
+      days.forEach((d) => {
+        const c = document.createElement('span');
+        c.className = 'gh-cell';
+        c.dataset.l = d.level;
+        c.title = `${d.count} contribution${d.count === 1 ? '' : 's'} on ${dateFmt.format(new Date(d.date + 'T00:00:00Z'))}`;
+        frag.appendChild(c);
+      });
+      ghGrid.appendChild(frag);
+      // On phones the strip scrolls; open it on the most recent weeks
+      const ghScroll = ghGrid.parentElement;
+      ghScroll.scrollLeft = ghScroll.scrollWidth;
+
+      const total = data.total && (data.total.lastYear ?? Object.values(data.total).reduce((a, b) => a + b, 0));
+      const fmt = (n) => Math.round(n).toLocaleString('en-CA');
+      ghTotal.textContent = fmt(total);
+
+      const motionOk = window.gsap && window.ScrollTrigger && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (motionOk) {
+        const counter = { n: 0 };
+        const cells = ghGrid.querySelectorAll('.gh-cell:not(.is-pad)');
+        gsap.set(cells, { scale: 0, opacity: 0 });
+        ScrollTrigger.create({
+          trigger: ghGrid,
+          start: 'top 92%',
+          once: true,
+          onEnter: () => {
+            gsap.to(cells, { scale: 1, opacity: 1, duration: 0.6, ease: 'expo.out', stagger: { each: 0.0018, from: 'start' } });
+            gsap.to(counter, { n: total, duration: 2, ease: 'expo.out', onUpdate: () => { ghTotal.textContent = fmt(counter.n); } });
+          },
+        });
+      }
+      refreshScroll();
+    })
+    .catch(() => {
+      // If the API is down, drop the block rather than show an empty grid
+      ghBlock.remove();
+      refreshScroll();
+    });
+
+  // Without the animation libraries, show everything statically
+  if (!window.gsap || !window.ScrollTrigger) {
+    root.classList.remove('js');
+    contact.style.background = 'var(--ink)';
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* ------------------------------------------------------------------
+     Smooth scrolling (Lenis) synced to GSAP's ticker
+  ------------------------------------------------------------------ */
+  let lenis = null;
+  if (window.Lenis && !reduceMotion) {
+    lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 0.9 });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      const target = id.length > 1 && document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      if (lenis) {
+        // Longer trips get more time, and the eases in and out avoid a jolt at either end
+        const distance = Math.abs(target.getBoundingClientRect().top);
+        lenis.scrollTo(target, {
+          duration: Math.min(3.2, Math.max(1.2, distance / 2600)),
+          easing: (t) => (t < 0.5 ? 16 * t ** 5 : 1 - Math.pow(-2 * t + 2, 5) / 2),
+        });
+      } else {
+        target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
+    });
+  });
+
+  /* ------------------------------------------------------------------
+     Three.js — noise-morphed particle sphere, wire shell, orbit ring
+  ------------------------------------------------------------------ */
+  const state = { x: 1.6, y: 0.3, scale: 1, amp: 0.2, freq: 0.9, spread: 0, rot: 0, tilt: 1.15, opacity: 1, ring: 1, wire: 1, invert: 0 };
+  const intro = { s: reduceMotion ? 1 : 0.55, o: reduceMotion ? 1 : 0 };
+  const pointer = { x: 0, y: 0, sx: 0, sy: 0 };
+
+  if (window.THREE) {
+    const canvas = document.getElementById('webgl');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+    renderer.setClearColor(0x000000, 0);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
+    camera.position.set(0, 0, 9);
+
+    const NOISE = `
+      vec3 mod289(vec3 x){return x-floor(x*(1.0/289.0))*289.0;}
+      vec4 mod289(vec4 x){return x-floor(x*(1.0/289.0))*289.0;}
+      vec4 permute(vec4 x){return mod289(((x*34.0)+1.0)*x);}
+      vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-0.85373472095314*r;}
+      float snoise(vec3 v){
+        const vec2 C=vec2(1.0/6.0,1.0/3.0);
+        const vec4 D=vec4(0.0,0.5,1.0,2.0);
+        vec3 i=floor(v+dot(v,C.yyy));
+        vec3 x0=v-i+dot(i,C.xxx);
+        vec3 g=step(x0.yzx,x0.xyz);
+        vec3 l=1.0-g;
+        vec3 i1=min(g.xyz,l.zxy);
+        vec3 i2=max(g.xyz,l.zxy);
+        vec3 x1=x0-i1+C.xxx;
+        vec3 x2=x0-i2+C.yyy;
+        vec3 x3=x0-D.yyy;
+        i=mod289(i);
+        vec4 p=permute(permute(permute(i.z+vec4(0.0,i1.z,i2.z,1.0))+i.y+vec4(0.0,i1.y,i2.y,1.0))+i.x+vec4(0.0,i1.x,i2.x,1.0));
+        float n_=0.142857142857;
+        vec3 ns=n_*D.wyz-D.xzx;
+        vec4 j=p-49.0*floor(p*ns.z*ns.z);
+        vec4 x_=floor(j*ns.z);
+        vec4 y_=floor(j-7.0*x_);
+        vec4 x=x_*ns.x+ns.yyyy;
+        vec4 y=y_*ns.x+ns.yyyy;
+        vec4 h=1.0-abs(x)-abs(y);
+        vec4 b0=vec4(x.xy,y.xy);
+        vec4 b1=vec4(x.zw,y.zw);
+        vec4 s0=floor(b0)*2.0+1.0;
+        vec4 s1=floor(b1)*2.0+1.0;
+        vec4 sh=-step(h,vec4(0.0));
+        vec4 a0=b0.xzyw+s0.xzyw*sh.xxyy;
+        vec4 a1=b1.xzyw+s1.xzyw*sh.zzww;
+        vec3 p0=vec3(a0.xy,h.x);
+        vec3 p1=vec3(a0.zw,h.y);
+        vec3 p2=vec3(a1.xy,h.z);
+        vec3 p3=vec3(a1.zw,h.w);
+        vec4 norm=taylorInvSqrt(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));
+        p0*=norm.x;p1*=norm.y;p2*=norm.z;p3*=norm.w;
+        vec4 m=max(0.6-vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)),0.0);
+        m=m*m;
+        return 42.0*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));
+      }`;
+
+    const uniforms = {
+      uTime: { value: 0 },
+      uAmp: { value: state.amp },
+      uFreq: { value: state.freq },
+      uSpread: { value: 0 },
+      uSize: { value: 2.1 },
+      uPR: { value: 1 },
+      uOpacity: { value: 0 },
+      uWire: { value: 1 },
+      uColor: { value: new THREE.Color(0x0a0a0a) },
+      uMouse: { value: new THREE.Vector2(9, 9) },
+      uHover: { value: 0 },
+      uAspect: { value: 1 },
+    };
+
+    const displace = `
+      vec3 dir = normalize(position);
+      float n = snoise(dir * uFreq + vec3(uTime * 0.12, uTime * 0.08, -uTime * 0.1));
+      vec3 nView = normalize(normalMatrix * dir);
+      vAlpha = 0.16 + 0.84 * smoothstep(-0.65, 0.9, nView.z);`;
+
+    // Pushes vertices outward where they sit under the cursor (screen space)
+    const repel = `
+      vec4 clip0 = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+      vec2 toMouse = (clip0.xy / clip0.w - uMouse) * vec2(uAspect, 1.0);
+      float push = smoothstep(0.42, 0.0, length(toMouse)) * uHover;
+      p += dir * push * 0.5;
+      vAlpha += push * 0.35;`;
+
+    // Particle sphere (Fibonacci lattice for even spacing)
+    const R = 1.6;
+    const count = innerWidth < 768 ? 5200 : 9000;
+    const positions = new Float32Array(count * 3);
+    const rands = new Float32Array(count);
+    const golden = Math.PI * (3 - Math.sqrt(5));
+    for (let i = 0; i < count; i++) {
+      const y = 1 - (i / (count - 1)) * 2;
+      const r = Math.sqrt(1 - y * y);
+      const t = golden * i;
+      positions[i * 3] = Math.cos(t) * r * R;
+      positions[i * 3 + 1] = y * R;
+      positions[i * 3 + 2] = Math.sin(t) * r * R;
+      rands[i] = Math.random();
+    }
+    const pointsGeo = new THREE.BufferGeometry();
+    pointsGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    pointsGeo.setAttribute('aRand', new THREE.BufferAttribute(rands, 1));
+
+    const pointsMat = new THREE.ShaderMaterial({
+      uniforms,
+      transparent: true,
+      depthWrite: false,
+      vertexShader: `
+        uniform float uTime, uAmp, uFreq, uSpread, uSize, uPR, uHover, uAspect;
+        uniform vec2 uMouse;
+        attribute float aRand;
+        varying float vAlpha;
+        ${NOISE}
+        void main() {
+          ${displace}
+          vec3 p = position + dir * (n * uAmp + aRand * uSpread * (0.55 + 0.45 * n));
+          ${repel}
+          vec4 mv = modelViewMatrix * vec4(p, 1.0);
+          gl_Position = projectionMatrix * mv;
+          gl_PointSize = uSize * uPR * (9.0 / -mv.z) * (0.65 + 0.7 * aRand);
+        }`,
+      fragmentShader: `
+        uniform vec3 uColor;
+        uniform float uOpacity;
+        varying float vAlpha;
+        void main() {
+          float d = length(gl_PointCoord - 0.5);
+          if (d > 0.5) discard;
+          float a = smoothstep(0.5, 0.15, d);
+          gl_FragColor = vec4(uColor, a * vAlpha * uOpacity * 0.85);
+        }`,
+    });
+    const points = new THREE.Points(pointsGeo, pointsMat);
+
+    // Faint wire shell sharing the same displacement field
+    const wireMat = new THREE.ShaderMaterial({
+      uniforms,
+      transparent: true,
+      depthWrite: false,
+      wireframe: true,
+      vertexShader: `
+        uniform float uTime, uAmp, uFreq, uHover, uAspect;
+        uniform vec2 uMouse;
+        varying float vAlpha;
+        ${NOISE}
+        void main() {
+          ${displace}
+          vec3 p = position + dir * n * uAmp;
+          ${repel}
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+        }`,
+      fragmentShader: `
+        uniform vec3 uColor;
+        uniform float uOpacity, uWire;
+        varying float vAlpha;
+        void main() { gl_FragColor = vec4(uColor, 0.09 * vAlpha * uOpacity * uWire); }`,
+    });
+    const wire = new THREE.Mesh(new THREE.IcosahedronGeometry(R * 0.985, 5), wireMat);
+
+    const sphere = new THREE.Group();
+    sphere.add(points, wire);
+
+    // Orbit ring
+    const ringCount = 420;
+    const ringPos = new Float32Array(ringCount * 3);
+    for (let i = 0; i < ringCount; i++) {
+      const a = (i / ringCount) * Math.PI * 2;
+      const rr = R * 1.62 + (Math.random() - 0.5) * 0.06;
+      ringPos[i * 3] = Math.cos(a) * rr;
+      ringPos[i * 3 + 1] = (Math.random() - 0.5) * 0.04;
+      ringPos[i * 3 + 2] = Math.sin(a) * rr;
+    }
+    const ringGeo = new THREE.BufferGeometry();
+    ringGeo.setAttribute('position', new THREE.BufferAttribute(ringPos, 3));
+    const ringMat = new THREE.PointsMaterial({ size: 0.022, color: 0x0a0a0a, transparent: true, opacity: 0, depthWrite: false, sizeAttenuation: true });
+    const ring = new THREE.Points(ringGeo, ringMat);
+    const ringPivot = new THREE.Group();
+    ringPivot.add(ring);
+
+    const world = new THREE.Group();
+    world.add(sphere, ringPivot);
+    scene.add(world);
+
+    let layout = { xf: 1, yOff: 0, sf: 1 };
+    const resize = () => {
+      const w = innerWidth, h = innerHeight;
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      uniforms.uPR.value = renderer.getPixelRatio();
+      uniforms.uAspect.value = camera.aspect;
+      uniforms.uSize.value = w < 768 ? 1.45 : 2.1;
+      // On narrow screens the shape sits higher and fainter, behind the stacked text
+      layout = w < 768 ? { xf: 0.18, yOff: 1.1, sf: 0.6, of: 0.7 }
+             : w < 1100 ? { xf: 0.65, yOff: 0.2, sf: 0.9, of: 0.85 }
+             : { xf: 1, yOff: 0, sf: 1, of: 1 };
+    };
+    resize();
+    addEventListener('resize', resize);
+
+    // Cursor in normalised device coordinates for the repel effect
+    const mouse = { x: 9, y: 9, active: 0 };
+    if (finePointer && !reduceMotion) {
+      addEventListener('pointermove', (e) => {
+        pointer.x = (e.clientX / innerWidth) * 2 - 1;
+        pointer.y = (e.clientY / innerHeight) * 2 - 1;
+        mouse.x = pointer.x;
+        mouse.y = -pointer.y;
+        mouse.active = 1;
+      });
+      document.addEventListener('pointerleave', () => { mouse.active = 0; });
+    }
+
+    const lerp = (a, b, t) => a + (b - a) * t;
+    let velocity = 0;
+    let spin = 0;
+    gsap.ticker.add((time) => {
+      const t = reduceMotion ? 0 : time;
+      pointer.sx = lerp(pointer.sx, pointer.x, 0.05);
+      pointer.sy = lerp(pointer.sy, pointer.y, 0.05);
+
+      // Fast scrolling stirs the surface and adds a little spin, then settles
+      velocity = lerp(velocity, lenis ? lenis.velocity : 0, 0.08);
+      const stir = Math.min(Math.abs(velocity) * 0.012, 0.3);
+      spin += velocity * 0.0004;
+
+      uniforms.uTime.value = t;
+      uniforms.uAmp.value = state.amp + stir;
+      uniforms.uFreq.value = state.freq;
+      uniforms.uSpread.value = state.spread + stir * 0.6;
+      uniforms.uOpacity.value = state.opacity * intro.o * layout.of;
+      uniforms.uWire.value = state.wire;
+      uniforms.uMouse.value.x = lerp(uniforms.uMouse.value.x, mouse.x, 0.12);
+      uniforms.uMouse.value.y = lerp(uniforms.uMouse.value.y, mouse.y, 0.12);
+      uniforms.uHover.value = lerp(uniforms.uHover.value, mouse.active, 0.05);
+
+      const shade = lerp(0.04, 0.98, state.invert);
+      uniforms.uColor.value.setScalar(shade);
+      ringMat.color.setScalar(shade);
+      ringMat.opacity = 0.32 * state.opacity * state.ring * intro.o * layout.of;
+
+      world.position.set(state.x * layout.xf, state.y + layout.yOff, 0);
+      world.scale.setScalar(state.scale * intro.s * layout.sf);
+
+      sphere.rotation.y = state.rot + spin + t * 0.06 + pointer.sx * 0.35;
+      sphere.rotation.x = 0.2 + pointer.sy * 0.25;
+      ringPivot.rotation.x = state.tilt + pointer.sy * 0.1;
+      ringPivot.rotation.z = 0.35;
+      ring.rotation.y = -t * 0.08;
+
+      renderer.render(scene, camera);
+    });
+
+    /* Scroll-driven morph: each section hands the shape a new pose */
+    if (!reduceMotion) {
+      // The sphere only holds its shape where the layout has open space (hero, contact).
+      // Through the reading sections it becomes faint dust so it never sits on text.
+      const poses = [
+        // Hero: beside the headline, ring orbiting
+        { x: 1.6, y: 0.3, scale: 1, amp: 0.2, freq: 0.9, spread: 0, rot: 0, tilt: 1.15, opacity: 1, ring: 1, wire: 1, invert: 0 },
+        // Work: dissolves into a wide dust field that shows between the cards
+        { x: 0, y: 0, scale: 1.8, amp: 0.5, freq: 1.6, spread: 1.4, rot: Math.PI * 0.8, tilt: 0.5, opacity: 0.38, ring: 0, wire: 0, invert: 0 },
+        // About: the dust thins out and drifts right, away from the sticky bio
+        { x: 1.5, y: -0.1, scale: 1.6, amp: 0.6, freq: 1.4, spread: 1.1, rot: Math.PI * 1.5, tilt: 0.8, opacity: 0.28, ring: 0, wire: 0, invert: 0 },
+        // Experience: starts gathering again at the right edge, half formed
+        { x: 3.3, y: 0.2, scale: 1.0, amp: 0.45, freq: 1.2, spread: 0.5, rot: Math.PI * 2.2, tilt: 1.0, opacity: 0.38, ring: 0.4, wire: 0.3, invert: 0 },
+        // Contact: re-forms centred and large, inverted to white on black
+        { x: 0, y: 0.15, scale: 1.4, amp: 0.34, freq: 1.0, spread: 0, rot: Math.PI * 2.9, tilt: 1.25, opacity: 0.85, ring: 1, wire: 1, invert: 1 },
+      ];
+      ['#work', '#about', '#experience', '#contact'].forEach((sel, i) => {
+        gsap.fromTo(state, { ...poses[i] }, {
+          ...poses[i + 1],
+          ease: 'none',
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: sel,
+            start: 'top bottom',
+            end: sel === '#contact' ? 'top top' : 'top 20%',
+            scrub: 1.2,
+          },
+        });
+      });
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     Page invert for the contact section
+  ------------------------------------------------------------------ */
+  if (reduceMotion) {
+    contact.style.background = 'var(--ink)';
+  } else {
+    gsap.fromTo(document.body, { backgroundColor: '#fafaf9' }, {
+      backgroundColor: '#0a0a0a',
+      ease: 'none',
+      immediateRender: false,
+      scrollTrigger: { trigger: contact, start: 'top 85%', end: 'top 30%', scrub: true },
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     Hero intro + scroll reveals
+  ------------------------------------------------------------------ */
+  if (reduceMotion) {
+    gsap.set(hero, { visibility: 'visible' });
+  } else {
+    const tl = gsap.timeline({ delay: 0.15 });
+    tl.from('#hero .line-inner', { yPercent: 115, duration: 1.5, ease: 'expo.out', stagger: 0.09 }, 0)
+      .from('[data-hero-fade]', { autoAlpha: 0, y: 24, duration: 1.2, ease: 'expo.out', stagger: 0.07 }, 0.55)
+      .to(intro, { s: 1, o: 1, duration: 2.6, ease: 'expo.out' }, 0);
+    gsap.set(hero, { visibility: 'visible' });
+
+    gsap.utils.toArray('[data-split]').forEach((el) => {
+      gsap.from(el.querySelectorAll('.line-inner'), {
+        yPercent: 115,
+        duration: 1.3,
+        ease: 'expo.out',
+        stagger: 0.08,
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+      });
+    });
+
+    gsap.set('[data-reveal]', { autoAlpha: 0, y: 48 });
+    ScrollTrigger.batch('[data-reveal]', {
+      start: 'top 90%',
+      once: true,
+      onEnter: (batch) => gsap.to(batch, { autoAlpha: 1, y: 0, duration: 1.2, ease: 'expo.out', stagger: 0.08, overwrite: true }),
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     Magnetic elements + cursor follower
+  ------------------------------------------------------------------ */
+  if (finePointer && !reduceMotion) {
+    document.querySelectorAll('[data-magnetic]').forEach((el) => {
+      const strength = parseFloat(el.dataset.magnetic) || 0.3;
+      const inner = el.querySelector('[data-magnetic-inner]');
+      const xTo = gsap.quickTo(el, 'x', { duration: 0.8, ease: 'power3.out' });
+      const yTo = gsap.quickTo(el, 'y', { duration: 0.8, ease: 'power3.out' });
+      const ixTo = inner && gsap.quickTo(inner, 'x', { duration: 0.8, ease: 'power3.out' });
+      const iyTo = inner && gsap.quickTo(inner, 'y', { duration: 0.8, ease: 'power3.out' });
+
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        xTo(dx * strength); yTo(dy * strength);
+        if (inner) { ixTo(dx * strength * 0.5); iyTo(dy * strength * 0.5); }
+      });
+      el.addEventListener('pointerleave', () => {
+        xTo(0); yTo(0);
+        if (inner) { ixTo(0); iyTo(0); }
+      });
+    });
+
+    const cursor = document.getElementById('cursor');
+    const cx = gsap.quickTo(cursor, 'x', { duration: 0.35, ease: 'power3.out' });
+    const cy = gsap.quickTo(cursor, 'y', { duration: 0.35, ease: 'power3.out' });
+    let shown = false;
+    addEventListener('pointermove', (e) => {
+      if (!shown) { gsap.set(cursor, { x: e.clientX, y: e.clientY }); gsap.to(cursor, { opacity: 1, duration: 0.4 }); shown = true; }
+      cx(e.clientX); cy(e.clientY);
+    });
+    document.addEventListener('pointerleave', () => { gsap.to(cursor, { opacity: 0, duration: 0.3 }); shown = false; });
+    document.addEventListener('pointerover', (e) => {
+      const hit = e.target.closest('a, button, [data-cursor]');
+      gsap.to(cursor, { scale: hit ? (hit.matches('[data-cursor]') ? 5 : 3) : 1, duration: 0.5, ease: 'expo.out', overwrite: 'auto' });
+    });
+  }
+
+  document.fonts && document.fonts.ready.then(() => ScrollTrigger.refresh());
+})();
+</script>
+</body>
 </html>
