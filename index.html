@@ -188,6 +188,9 @@
   .xp-row:hover::before { transform: scaleY(1); }
   .xp-row:hover .xp-mute { color: #a3a3a3; }
   .xp-row:hover .tag { background: transparent; border-color: #404040; color: #e5e5e5; }
+  .xp-promo { margin-top: .35rem; }
+  .xp-row:hover .xp-promo { color: var(--paper); }
+  .xp-row.is-open .xp-promo { color: rgba(10, 10, 10, .7); }
 
   /* Open rows stay light so the details are easy to read */
   .xp-row.is-open { color: var(--ink); }
@@ -274,6 +277,7 @@
     .xp-row:hover { color: inherit; }
     .xp-row:hover::before { transform: scaleY(0); }
     .xp-row:hover .xp-mute { color: var(--mute); }
+    .xp-row:hover .xp-promo { color: rgba(10, 10, 10, .7); }
     .xp-row:hover .tag { background: var(--paper); border-color: var(--line); color: var(--ink); }
     .xp-row:hover .xp-icon { transform: none; }
     .xp-row.is-open .xp-icon { transform: rotate(90deg); }
@@ -662,8 +666,8 @@
         </li>
         <li class="xp-row border-b border-line" data-reveal>
           <button type="button" class="xp-toggle w-full text-left grid grid-cols-12 gap-x-4 gap-y-1 py-6 md:py-8 px-3 md:px-5 items-baseline" aria-expanded="false" aria-controls="xp-3">
-            <span class="col-span-12 md:col-span-3 label xp-mute text-mute">Aug 2025 — Nov 2026</span>
-            <span class="col-span-12 md:col-span-5 font-display font-medium text-xl md:text-3xl tracking-[-.03em]">Software Engineer</span>
+            <span class="col-span-12 md:col-span-3 label xp-mute text-mute">Aug 2025 — Nov 2026<span class="block text-ink/70 xp-promo">Promoted Aug 2026</span></span>
+            <span class="col-span-12 md:col-span-5 font-display font-medium text-xl md:text-3xl tracking-[-.03em]">Software Engineer II</span>
             <span class="col-span-10 md:col-span-3 text-[15px] xp-mute text-mute">Postilize</span>
             <span class="col-span-2 md:col-span-1 text-right"><span class="xp-icon" aria-hidden="true">→</span></span>
           </button>
@@ -672,8 +676,12 @@
               <div class="grid grid-cols-12 gap-x-4 px-3 md:px-5 pb-8 md:pb-10">
                 <div class="col-span-12 md:col-span-8 md:col-start-4">
                   <ul class="xp-bullets">
-                    <li>Shipped features across Postilize’s AI-driven outreach platform: the web app, background agents and third-party integrations.</li>
+                    <li>Raised the precision of AI-detected sales signals, finding and removing a duplicate class about 35x larger than any fixed before and reaching 95.7% precision on litigation filtering, by building URL-normalized and entity-overlap dedup gates plus GPT-4.1 verifiers validated through offline replay and blind grading.</li>
+                    <li>Turned SEC filings that ran for hours and re-queued night after night into extractions of 1.4 s or less on the largest filings, by rebuilding EDGAR ingestion on BullMQ with fan-out queues, per-filing retries and a shared rate limiter, and replacing a backtracking regex with a linear scan proven equivalent by 20,000-case fuzz tests.</li>
+                    <li>Cut timing-out feed searches for the largest customers from 43 s to about 14 s by routing queries to indexed lookups, and built an Atlas Search path that reads 26–265x fewer rows with no loss of precision.</li>
+                    <li>Launched a new public-agency signal product end to end, now producing signals from 19 utility-district and agency sources, by building Firecrawl crawling, local PDF and OCR parsing, GPT extraction, and self-serve source onboarding that learns a site’s document pattern from a single example link.</li>
                   </ul>
+                  <div class="flex flex-wrap gap-2 mt-6"><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">BullMQ</span><span class="tag">Redis</span><span class="tag">OpenAI</span><span class="tag">Atlas Search</span></div>
                 </div>
               </div>
             </div>
