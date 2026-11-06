@@ -1228,15 +1228,15 @@ export function buildWorld({ reducedMotion = false } = {}) {
     let following = false
     const it = interactable({ id, name: entry.title, label, verb: 'Pet', anchor, height: 1.3, radius: 1.5, entry })
     it.freeze = false
-    // the tag shows whether she is following you, not a ✓ (she still counts as found)
-    it.plateCheck = false
+    // her tag's ✓ means "following you" rather than "found" (she still counts as found)
+    it.check = false
     it.lookAt = (px, pz) => {
       facing = Math.atan2(-(pz - anchor.z), px - anchor.x)
       root.rotation.y = facing
     }
     it.onInteract = () => {
       following = !following
-      it.status = following ? 'following' : ''
+      it.check = following
       it.verb = following ? 'Let go' : 'Pet'
     }
     updaters.push(({ t, dt, focus }) => {

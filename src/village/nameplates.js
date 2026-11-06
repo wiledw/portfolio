@@ -13,11 +13,9 @@ export function createNameplates({ container, items, camera }) {
     check.textContent = '✓'
     const text = document.createElement('span')
     text.textContent = it.label
-    const status = document.createElement('span')
-    status.className = 'np-status'
-    el.append(check, text, status)
+    el.append(check, text)
     container.append(el)
-    return { it, el, status, w: 0, h: 0, op: -1, done: null, state: '', x: 0, y: 0, d: 0, visible: false }
+    return { it, el, w: 0, h: 0, op: -1, done: null, x: 0, y: 0, d: 0, visible: false }
   })
   const v = new THREE.Vector3()
   const placed = []
@@ -72,17 +70,11 @@ export function createNameplates({ container, items, camera }) {
         p.op = p.target
         p.el.style.opacity = p.op.toFixed(2)
       }
-      const done = p.it.discovered && p.it.plateCheck !== false
+      // ✓ = found, unless the thing says otherwise (a cat: following you)
+      const done = 'check' in p.it ? p.it.check : p.it.discovered
       if (p.done !== done) {
         p.done = done
         p.el.classList.toggle('is-done', done)
-      }
-      const state = p.it.status || ''
-      if (p.state !== state) {
-        p.state = state
-        p.status.textContent = state
-        p.el.classList.toggle('has-status', !!state)
-        p.w = 0 // re-measure for overlap checks
       }
     }
   }
