@@ -799,14 +799,15 @@ export function buildWorld({ reducedMotion = false } = {}) {
     const sz = 16.6
     // a Japanese bus stop pole: round stop disc on top, the timetable below
     const sgn = at(sx, sz)
-    put(sgn, cyl(0.05, 0.05, 2.3, C.stoneDark, 8), 0, 1.15, 0)
-    put(sgn, cyl(0.24, 0.28, 0.12, C.stoneDark, 12), 0, 0.06, 0) // weighted base
+    // the pole stands just behind the disc and timetable so it never shows through their faces
+    put(sgn, cyl(0.05, 0.05, 2.3, C.stoneDark, 8), 0, 1.15, -0.13)
+    put(sgn, cyl(0.24, 0.28, 0.12, C.stoneDark, 12), 0, 0.06, -0.13) // weighted base
     // the disc leans back a little so it reads from the camera above
     const head = new THREE.Group()
     head.position.set(0, 2.3, 0)
     head.rotation.x = -0.32
     sgn.add(head)
-    put(head, cyl(0.47, 0.47, 0.06, C.red, 24), 0, 0, -0.02, 0, Math.PI / 2)
+    put(head, cyl(0.47, 0.47, 0.06, C.red, 24), 0, 0, -0.035, 0, Math.PI / 2)
     const dc = document.createElement('canvas')
     dc.width = dc.height = 256
     const d = dc.getContext('2d')
@@ -833,7 +834,7 @@ export function buildWorld({ reducedMotion = false } = {}) {
     disc.geometry = new THREE.CircleGeometry(0.45, 32)
     put(head, disc, 0, 0, 0.015)
     // timetable: where this bus goes
-    put(sgn, rbox(0.66, 0.56, 0.06, C.ink, 0.02), 0, 1.42, 0.01)
+    put(sgn, rbox(0.66, 0.56, 0.12, C.ink, 0.02), 0, 1.42, -0.02) // timetable frame, clamped to the pole
     const tt = textTexture(['Classic', 'site →'], { width: 320, height: 256, size: 76, bg: C.plaster, fg: C.ink, border: C.red })
     put(sgn, panel(0.58, 0.48, tt), 0, 1.42, 0.045)
     circle(sx, sz, 0.26)
