@@ -609,7 +609,7 @@ export function buildWorld({ reducedMotion = false } = {}) {
 
     // Career: one station name board per role, oldest first, walking east
     CAREER.forEach((entry, i) => {
-      const bx = 18.8 + i * 1.55
+      const bx = 18.35 + i * 1.5 // the last board ends short of the platform clock at x 30
       const bz = -2.45
       const g = at(bx, bz)
       g.position.y = PLATFORM.h
