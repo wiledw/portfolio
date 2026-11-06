@@ -230,6 +230,11 @@ button { font: inherit; }
 .np-check { display: none; color: #4f8a2c; font-weight: 700; }
 .np.is-done { background: rgba(233, 240, 214, .94); border-color: #6f8f4a; }
 .np.is-done .np-check { display: inline; }
+.np-status { display: none; }
+.np.has-status .np-status {
+  display: inline; margin-left: 2px; padding: 1px 6px 0;
+  font-size: 11px; color: #fff; background: var(--accent); border-radius: 6px;
+}
 @media (max-width: 640px) { .np { font-size: 11px; padding: 3px 7px 2px; } }
 
 /* ----------------------------------------------------------- prompt */

@@ -421,7 +421,8 @@ export function buildWorld({ reducedMotion = false } = {}) {
     for (let z = -8.8; z > -14.9; z -= 0.6) {
       put(staticRoot, rbox(2.2 + R(-0.1, 0.1), 0.16, 0.54, random() > 0.5 ? C.stone : C.stoneLight, 0.05), R(-0.05, 0.05), gh(0, z) + 0.02, z, R(-0.04, 0.04))
     }
-    for (const z of [-6.2, -10.4, -13.6]) for (const sx of [-1.95, 1.95]) stoneLantern(sx, z, 0.8)
+    // (the top of the steps is framed by the komainu and the two lanterns beside them)
+    for (const z of [-6.2, -10.4]) for (const sx of [-1.95, 1.95]) stoneLantern(sx, z, 0.8)
 
     const sz = -18.7
     const g = at(0, sz)
@@ -473,11 +474,13 @@ export function buildWorld({ reducedMotion = false } = {}) {
       face.rotation.z = tilt
       interactable({ id: `hack-${i}`, name: entry.title, label: `${entry.title} · win`, plateRange: 7, verb: 'Read the plaque', x, z: -15.3, sz: -16.3, height: 2.45, radius: 1.3, entry })
     })
-    stoneLantern(-2.4, -16.0, 0.85)
-    stoneLantern(2.4, -16.0, 0.85)
+    // Everything up here stands clear of one lane in front of the hall
+    // (z ≈ -15.3), the only way from the top of the steps to the plaques.
+    stoneLantern(-3.4, -14.35, 0.85)
+    stoneLantern(3.4, -14.35, 0.85)
     // a pair of komainu guarding the top of the steps, one mouth open, one closed
     for (const sx of [-1, 1]) {
-      const k = at(sx * 1.75, -14.6, sx * -0.35)
+      const k = at(sx * 1.75, -14.3, sx * -0.35)
       put(k, rbox(0.7, 0.42, 0.7, C.stoneDark, 0.08), 0, 0.21, 0)
       put(k, rbox(0.42, 0.5, 0.52, C.stone, 0.16), 0, 0.66, -0.05)
       put(k, rbox(0.42, 0.4, 0.4, C.stone, 0.15), 0, 1.05, 0.12)
@@ -485,7 +488,7 @@ export function buildWorld({ reducedMotion = false } = {}) {
       put(k, rbox(0.3, sx > 0 ? 0.12 : 0.06, 0.08, C.ink, 0.02), 0, 0.98, 0.33)
       put(k, rbox(0.12, 0.28, 0.12, C.stone, 0.05), -0.26, 0.34, 0.24)
       put(k, rbox(0.12, 0.28, 0.12, C.stone, 0.05), 0.26, 0.34, 0.24)
-      circle(sx * 1.75, -14.6, 0.42)
+      circle(sx * 1.75, -14.3, 0.38)
     }
   }
 
@@ -794,14 +797,47 @@ export function buildWorld({ reducedMotion = false } = {}) {
     clear(x, z, 2)
     const sx = 2.2
     const sz = 16.6
+    // a Japanese bus stop pole: round stop disc on top, the timetable below
     const sgn = at(sx, sz)
-    put(sgn, cyl(0.05, 0.05, 2.2, C.stoneDark, 8), 0, 1.1, 0)
-    put(sgn, cyl(0.46, 0.46, 0.05, C.red, 20), 0, 2.2, -0.03, 0, Math.PI / 2)
-    put(sgn, rbox(0.5, 0.36, 0.05, C.plaster, 0.02), 0, 1.5, 0.03)
-    const tex = textTexture(['BUS', 'classic site'], { width: 256, height: 256, size: 46, bg: C.plaster, fg: C.ink, border: null })
-    put(sgn, panel(0.64, 0.64, tex), 0, 2.2, 0.01)
-    circle(sx, sz, 0.2)
-    interactable({ id: 'exit', name: EXIT.title, label: 'Bus · back to the classic site', verb: 'Wait for the bus', x: sx - 0.6, z: sz + 0.6, sx, sz, height: 2.75, radius: 1.6, entry: EXIT, counts: false })
+    put(sgn, cyl(0.05, 0.05, 2.3, C.stoneDark, 8), 0, 1.15, 0)
+    put(sgn, cyl(0.24, 0.28, 0.12, C.stoneDark, 12), 0, 0.06, 0) // weighted base
+    // the disc leans back a little so it reads from the camera above
+    const head = new THREE.Group()
+    head.position.set(0, 2.3, 0)
+    head.rotation.x = -0.32
+    sgn.add(head)
+    put(head, cyl(0.47, 0.47, 0.06, C.red, 24), 0, 0, -0.02, 0, Math.PI / 2)
+    const dc = document.createElement('canvas')
+    dc.width = dc.height = 256
+    const d = dc.getContext('2d')
+    d.fillStyle = C.red
+    d.fillRect(0, 0, 256, 256)
+    d.fillStyle = C.plaster
+    d.beginPath()
+    d.arc(128, 128, 100, 0, Math.PI * 2)
+    d.fill()
+    d.fillStyle = C.ink
+    d.textAlign = 'center'
+    d.textBaseline = 'middle'
+    d.font = '74px "DotGothic16"'
+    d.fillText('BUS', 128, 112)
+    d.fillStyle = C.red
+    d.fillRect(66, 152, 124, 7)
+    d.fillStyle = C.ink
+    d.font = '30px "DotGothic16"'
+    d.fillText('STOP', 128, 182)
+    const discTex = new THREE.CanvasTexture(dc)
+    discTex.colorSpace = THREE.SRGBColorSpace
+    const disc = panel(1, 1, discTex)
+    disc.geometry.dispose()
+    disc.geometry = new THREE.CircleGeometry(0.45, 32)
+    put(head, disc, 0, 0, 0.015)
+    // timetable: where this bus goes
+    put(sgn, rbox(0.66, 0.56, 0.06, C.ink, 0.02), 0, 1.42, 0.01)
+    const tt = textTexture(['Classic', 'site →'], { width: 320, height: 256, size: 76, bg: C.plaster, fg: C.ink, border: C.red })
+    put(sgn, panel(0.58, 0.48, tt), 0, 1.42, 0.045)
+    circle(sx, sz, 0.26)
+    interactable({ id: 'exit', name: EXIT.title, label: 'Bus · back to the classic site', verb: 'Wait for the bus', x: sx - 0.6, z: sz + 0.6, sx, sz, height: 3.1, radius: 1.6, entry: EXIT, counts: false })
   }
 
   // ============================================================== BRIDGE
@@ -1191,12 +1227,16 @@ export function buildWorld({ reducedMotion = false } = {}) {
     let following = false
     const it = interactable({ id, name: entry.title, label, verb: 'Pet', anchor, height: 1.3, radius: 1.5, entry })
     it.freeze = false
+    // the tag shows whether she is following you, not a ✓ (she still counts as found)
+    it.plateCheck = false
     it.lookAt = (px, pz) => {
       facing = Math.atan2(-(pz - anchor.z), px - anchor.x)
       root.rotation.y = facing
     }
     it.onInteract = () => {
       following = !following
+      it.status = following ? 'following' : ''
+      it.verb = following ? 'Let go' : 'Pet'
     }
     updaters.push(({ t, dt, focus }) => {
       tail.rotation.x = Math.sin(t * 2.6) * 0.4
@@ -1599,14 +1639,14 @@ export function buildWorld({ reducedMotion = false } = {}) {
   // Smoke: a lazy curl from the house chimney, and incense at the shrine
   {
     // incense burner in front of the shrine hall
-    const ib = at(1.3, -15.85)
+    const ib = at(2.4, -16.15)
     put(ib, rbox(0.7, 0.3, 0.7, C.stoneDark, 0.06), 0, 0.15, 0)
     put(ib, cyl(0.3, 0.22, 0.4, C.ink, 12), 0, 0.5, 0)
     put(ib, cyl(0.34, 0.34, 0.06, C.woodDark, 12), 0, 0.72, 0)
-    circle(1.3, -15.85, 0.4)
+    circle(2.4, -16.15, 0.32)
     const sources = [
       { x: -7.4, y: gh(-10, -6.1) + 5.25, z: -7.1, n: 12, size: 0.42, rise: 0.55, life: 4.2 },
-      { x: 1.3, y: gh(1.3, -15.85) + 0.8, z: -15.85, n: 8, size: 0.14, rise: 0.35, life: 3.2 },
+      { x: 2.4, y: gh(2.4, -16.15) + 0.8, z: -16.15, n: 8, size: 0.14, rise: 0.35, life: 3.2 },
     ]
     const total = sources.reduce((a, s) => a + s.n, 0)
     const smoke = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(1, 1), new THREE.MeshBasicMaterial({ color: '#f3efe6', transparent: true, opacity: 0.42, depthWrite: false }), total)
