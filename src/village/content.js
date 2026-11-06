@@ -222,5 +222,10 @@ export const WELCOME = {
   ],
 }
 
-// The plaza signpost
-export const SIGNPOST = ['← Home · Rice paddies', '↑ Shrine', 'Workshop · Station →']
+// The plaza finger-post: one board per direction, top to bottom.
+// dir: -1 points west (left), 1 east (right), 0 straight ahead (up the steps).
+export const SIGNPOST = [
+  { text: '↑  Shrine', dir: 0 },
+  { text: 'Home · Rice paddies', dir: -1 },
+  { text: 'Workshop · Station', dir: 1 },
+]

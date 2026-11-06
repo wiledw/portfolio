@@ -70,9 +70,11 @@ export function createNameplates({ container, items, camera }) {
         p.op = p.target
         p.el.style.opacity = p.op.toFixed(2)
       }
-      if (p.done !== p.it.discovered) {
-        p.done = p.it.discovered
-        p.el.classList.toggle('is-done', p.done)
+      // ✓ = found, unless the thing says otherwise (a cat: following you)
+      const done = 'check' in p.it ? p.it.check : p.it.discovered
+      if (p.done !== done) {
+        p.done = done
+        p.el.classList.toggle('is-done', done)
       }
     }
   }
