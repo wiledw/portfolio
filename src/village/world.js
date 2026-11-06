@@ -229,7 +229,7 @@ export function buildWorld({ reducedMotion = false } = {}) {
     return g
   }
 
-  /** A post with one pointed board per direction, stacked, each pointing the way it names. */
+  /** A post with one board per direction, stacked and centred so their edges line up; a side board's tip points the way it names. */
   function fingerpost(x, z, boards) {
     const g = at(x, z)
     const H = 0.62 // board height
@@ -239,17 +239,13 @@ export function buildWorld({ reducedMotion = false } = {}) {
     put(g, cone(0.14, 0.18, C.woodDark, 4), 0, top + 0.34, -0.12, Math.PI / 4) // little cap
     boards.forEach(({ text, dir }, i) => {
       const y = top - H / 2 - i * (H + GAP)
-      const w = dir ? 3.0 : 2.0
-      // a pointed board reaches out from the post; the straight-ahead one sits centred
-      const cx = dir * (w / 2 - 0.25)
-      const tilt = dir ? R(-0.03, 0.03) : 0
+      const w = 2.8
       const b = new THREE.Group()
-      b.position.set(cx, y, 0)
-      b.rotation.z = tilt
+      b.position.set(0, y, 0)
       g.add(b)
       put(b, rbox(w, H, 0.1, C.woodPale, 0.05), 0, 0, 0)
-      if (dir) put(b, cone(H * 0.62, 0.32, C.woodPale, 4), dir * (w / 2 + 0.1), 0, 0, 0, 0, (-dir * Math.PI) / 2).scale.set(1, 1, 0.23)
-      const tex = textTexture([dir < 0 ? `←  ${text}` : dir > 0 ? `${text}  →` : text], { width: Math.round(256 * w), height: Math.round(256 * H), size: 84 })
+      if (dir) put(b, cone(H * 0.62, 0.26, C.woodPale, 4), dir * (w / 2 + 0.08), 0, 0, 0, 0, (-dir * Math.PI) / 2).scale.set(1, 1, 0.23)
+      const tex = textTexture([dir < 0 ? `←  ${text}` : dir > 0 ? `${text}  →` : text], { width: Math.round(256 * w), height: Math.round(256 * H), size: 56 }) // one size for every board, with room either side
       put(b, panel(w - 0.1, H - 0.08, tex), 0, 0, 0.055)
     })
     circle(x, z, 0.28)
